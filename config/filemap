@@ -1,0 +1,51 @@
+barroit/.lowprior	$HOME
+
+code/keybindings.json	$HOME/.config/Code/User
+code/settings.json	$HOME/.config/Code/User
+
+codespell/.codespellrc	$HOME
+
+fastfetch/config.jsonc	$HOME/.config/fastfetch
+fastfetch/dotmiku	$HOME/.config/fastfetch
+
+gdb/gdbinit		$HOME/.config/gdb
+gdb/hexdump.py		$HOME/.config/gdb
+
+git/.gitconfig		$HOME
+git/ignore		$HOME/.config/git
+
+gpg/gpg.conf		$HOME/.gnupg
+
+mutt/.mailcap		$HOME
+mutt/.muttrc		$HOME
+mutt/.signature		$HOME
+mutt/oauth2.py		$HOME/.mutt
+mutt/auth.oauth2	$HOME/.mutt
+mutt/auth.password	$HOME/.mutt
+
+mutt/@gmail.com			$HOME/.mutt
+mutt/@naver.com			$HOME/.mutt
+mutt/@outlook.com		$HOME/.mutt
+mutt/@sunjiamu@outlook.com	$HOME/.mutt
+
+mutt/barroit@linux.com			$HOME/.mutt
+mutt/sunjiamu@outlook.com		$HOME/.mutt
+mutt/client.sunjiamu@outlook.com	$HOME/.mutt
+
+mutt/barroit39@gmail.com		$HOME/.mutt
+mutt/client.barroit39@gmail.com		$HOME/.mutt
+
+mutt/barroit@naver.com			$HOME/.mutt
+mutt/client.barroit@naver.com		$HOME/.mutt
+
+mutt/j25232sj@edu.tuis.ac.jp		$HOME/.mutt
+mutt/client.j25232sj@edu.tuis.ac.jp	$HOME/.mutt
+
+ssh/config		$HOME/.ssh
+
+vim/.vimrc		$HOME
+vim/barroit.vim		$HOME/.vim/colors
+
+xmodmap/.Xmodmap	$HOME
+
+xorg/xorg.conf		/etc/X11		copy,sudo
