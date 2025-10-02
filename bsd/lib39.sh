@@ -5,7 +5,7 @@ if [ -z "$LIBKIT_ROOT" ]; then
 	exit 128
 fi
 
-. $LIBKIT_ROOT/../posix/libkit.sh
+. $LIBKIT_ROOT/../posix/lib39.sh
 
 current()
 {

@@ -3,7 +3,7 @@
 
 export LIBKIT_ROOT=$(dirname $(readlink -f $0))
 
-source $LIBKIT_ROOT/libkit.sh
+source $LIBKIT_ROOT/lib39.sh
 source $LIBKIT_ROOT/libsetup.sh
 
 source $1

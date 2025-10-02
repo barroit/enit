@@ -9,7 +9,7 @@ absname()
 script_root=$(absname $(dirname $0))
 libkit_root=$(dirname $(absname $0))
 
-. $libkit_root/libkit.sh
+. $libkit_root/lib39.sh
 
 if [ -n "$1" ]; then
 	name=$1

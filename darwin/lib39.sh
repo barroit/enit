@@ -5,7 +5,7 @@ if [[ ! $LIBKIT_ROOT ]]; then
 	exit 128
 fi
 
-source $LIBKIT_ROOT/../posix/libkit.sh
+source $LIBKIT_ROOT/../posix/lib39.sh
 
 function current()
 {
