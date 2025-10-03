@@ -1,1 +1,0 @@
-../bsd/exec.sh

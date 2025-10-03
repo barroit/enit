@@ -42,7 +42,7 @@ fi
 scripts=${scripts:-$(find $stree -name [0-9][0-9]-*.sh | sort)}
 
 for script in $scripts; do
-	$stree/exec.sh $script
+	$stree/run.sh $script
 
 	if [ $? -ne 0 ]; then
 		warn "$(basename $script) interrupted"
