@@ -4,6 +4,6 @@
 export ctree=$(dirname $(readlink -f $0))
 
 source $ctree/lib39.sh
-source $ctree/libsetup.sh
+source $ctree/libnit.sh
 
 source $1

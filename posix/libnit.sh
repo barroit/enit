@@ -12,8 +12,6 @@ export ASSETS_ROOT=$__repo_root/assets
 export SCRIPT_ROOT=$__repo_root/scripts
 export CONFIG_ROOT=$__repo_root/config
 
-. $ctree/libsetup-rt.sh
-
 mkdir -p "$(datadir)"
 
 setup_is_done()

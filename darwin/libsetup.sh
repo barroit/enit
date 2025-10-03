@@ -1,1 +1,0 @@
-../posix/libsetup.sh
