@@ -32,7 +32,7 @@ setup_done()
 
 exec_is_force()
 {
-	test $SCRIPT_NAME = "$FORCE_EXEC"
+	test $SCRIPT_NAME = "$force"
 }
 
 # Only use this in consumer scripts.
