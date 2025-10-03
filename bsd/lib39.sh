@@ -1,11 +1,11 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if [ -z "$LIBKIT_ROOT" ]; then
+if [ -z "$ctree" ]; then
 	exit 128
 fi
 
-. $LIBKIT_ROOT/../posix/lib39.sh
+. $ctree/../posix/lib39.sh
 
 current()
 {

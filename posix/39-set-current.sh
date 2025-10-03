@@ -1,7 +1,7 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-name=$(basename $LIBKIT_ROOT)
+name=$(basename $ctree)
 
 if ! exec_is_force && setup_is_done; then
 	log "Linking \`$name' to 'current' ... Skipped"

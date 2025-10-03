@@ -1,7 +1,7 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if [ ! $LIBKIT_ROOT ]; then
+if [ ! $ctree ]; then
 	exit 128
 fi
 
@@ -12,7 +12,7 @@ export ASSETS_ROOT=$__repo_root/assets
 export SCRIPT_ROOT=$__repo_root/scripts
 export CONFIG_ROOT=$__repo_root/config
 
-. $LIBKIT_ROOT/libsetup-rt.sh
+. $ctree/libsetup-rt.sh
 
 mkdir -p "$(datadir)"
 

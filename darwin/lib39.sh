@@ -1,11 +1,11 @@
 #!/bin/zsh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if [[ ! $LIBKIT_ROOT ]]; then
+if [[ ! $ctree ]]; then
 	exit 128
 fi
 
-source $LIBKIT_ROOT/../posix/lib39.sh
+source $ctree/../posix/lib39.sh
 
 function current()
 {

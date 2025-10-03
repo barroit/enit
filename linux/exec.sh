@@ -1,9 +1,9 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-export LIBKIT_ROOT=$(dirname $(readlink -f $0))
+export ctree=$(dirname $(realpath $(readlink $0)))
 
-source $LIBKIT_ROOT/lib39.sh
-source $LIBKIT_ROOT/libsetup.sh
+source $ctree/lib39.sh
+source $ctree/libsetup.sh
 
 source $1
