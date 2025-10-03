@@ -1,13 +1,8 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-absname()
-{
-	printf '%s\n' $(perl -e 'use Cwd "abs_path"; print abs_path(shift)' $1)
-}
-
-script_root=$(absname $(dirname $0))
-libkit_root=$(dirname $(absname $0))
+script_root=$(realpath $(dirname $0))
+libkit_root=$(dirname $(realpath $0))
 
 . $libkit_root/lib39.sh
 
