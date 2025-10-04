@@ -1,40 +1,30 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if [ ! $ctree ]; then
-	exit 128
-fi
+export script=$1
+export etctree=$rtree/etc
+export vartree=$rtree/var
 
-__repo_root=$(dirname $0)/..
+. $ctree/libnitvar.sh
 
-export SCRIPT_NAME=$1
-export ASSETS_ROOT=$__repo_root/assets
-export SCRIPT_ROOT=$__repo_root/scripts
-export CONFIG_ROOT=$__repo_root/config
+mkdir -p "$data"
 
-mkdir -p "$(datadir)"
-
-setup_is_done()
+test_init_done()
 {
-	touch "$(datadir)/done"
-
-	grep -q $SCRIPT_NAME "$(datadir)/done"
+	test -f $data/$script
 }
 
-setup_done()
+mark_init_done()
 {
-	if ! setup_is_done; then
-		printf '%s\n' $SCRIPT_NAME >> "$(datadir)/done"
-	fi
+	touch $data/$script
 }
 
-exec_is_force()
+test_force_run()
 {
-	test $SCRIPT_NAME = "$force"
+	test $script = "$force"
 }
 
-# Only use this in consumer scripts.
-os_name()
+os_id()
 {
-	basename $(dirname $1)
+	basename $(dirname $0)
 }

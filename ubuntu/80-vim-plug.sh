@@ -1,8 +1,8 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Installing vim plug ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Installing vim plug ... Skipped'
 	exit
 fi
 
@@ -14,5 +14,5 @@ fi
 
 curl -Lo $dst $(cat $CONFIG_ROOT/vim-plug-url)
 
-setup_done
-log 'Installing vim plug ... OK'
+mark_init_done
+info 'Installing vim plug ... OK'

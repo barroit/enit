@@ -3,21 +3,21 @@
 
 set -e
 
-if ! exec_is_force && setup_is_done; then
-	log 'Mapping files ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Mapping files ... Skipped'
 	exit
 fi
 
 while read line; do
-	if line_need_skip "$line"; then
+	if need_skip_line "$line"; then
 		continue
 	fi
 
-	name=$(r1 "$line")
-	dst_dir=$(r2 "$line")
+	name=$(linecol_1 "$line")
+	dst_dir=$(linecol_2 "$line")
 
 	if [ -z "$dst_dir" ] || [ "$dst_dir" = - ]; then
-		dst_dir=$(r2 "$(grep $name $CONFIG_ROOT/filemap)")
+		dst_dir=$(linecol_2 "$(grep $name $CONFIG_ROOT/filemap)")
 	fi
 
 	if [ -z "$dst_dir" ]; then
@@ -26,7 +26,7 @@ while read line; do
 	fi
 
 	dst_dir=$(eval "printf '%s\n' \"$dst_dir\"")
-	mode=$(r3 "$line")
+	mode=$(linecol_3 "$line")
 
 	src=$ASSETS_ROOT/$name
 	dst=$dst_dir/$(basename $name)
@@ -51,7 +51,7 @@ while read line; do
 
 	printf "$fmt" $name "$dst"
 
-done <$CONFIG_ROOT/filemap-$(os_name $0)
+done <$CONFIG_ROOT/filemap-$(os_id)
 
-setup_done
-log 'Mapping files ... OK'
+mark_init_done
+info 'Mapping files ... OK'

@@ -1,8 +1,8 @@
 #!/bin/zsh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Configuring Zsh history ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Configuring Zsh history ... Skipped'
 	exit
 fi
 
@@ -14,5 +14,5 @@ if ! grep -Fq "$line" ~/.zshrc; then
 	printf '\n%s\n' "$line" >> ~/.zshrc
 fi
 
-setup_done
-log 'Configuring Zsh history ... OK'
+mark_init_done
+info 'Configuring Zsh history ... OK'

@@ -1,8 +1,8 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Redirecting user directories ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Redirecting user directories ... Skipped'
 	exit
 fi
 
@@ -44,5 +44,5 @@ xdg-user-dirs-update --set DESKTOP $HOME/desktop
 xdg-user-dirs-update --set DOWNLOAD $HOME/download
 xdg-user-dirs-update --set PICTURES $HOME/picture
 
-setup_done
-log 'Redirecting user directories ... OK'
+mark_init_done
+info 'Redirecting user directories ... OK'

@@ -1,8 +1,8 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Configuring core dump ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Configuring core dump ... Skipped'
 	exit
 fi
 
@@ -16,5 +16,5 @@ sudo tee /etc/sysctl.d/39-coredump.conf
 
 sudo service procps reload
 
-setup_done
-log 'Configuring core dump ... OK'
+mark_init_done
+info 'Configuring core dump ... OK'

@@ -1,8 +1,8 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done || virt; then
-	log 'Installing JetBrains Mono ... Skipped'
+if ! test_force_run && test_init_done || test_vm; then
+	info 'Installing JetBrains Mono ... Skipped'
 	exit
 fi
 
@@ -24,5 +24,5 @@ mv fonts $dst
 
 fc-cache -f
 
-setup_done
-log 'Installing JetBrains Mono ... OK'
+mark_init_done
+info 'Installing JetBrains Mono ... OK'

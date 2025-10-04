@@ -33,9 +33,9 @@ note()
 	printf "${BOLD}${CYAN}note:${RESET} %s\n" "$@"
 }
 
-log()
+info()
 {
-	printf "${BOLD}${GREEN}[$(current)]${RESET} %s\n" "$@"
+	printf "${BOLD}${GREEN}[$(now)]${RESET} %s\n" "$@"
 }
 
 getchar()
@@ -84,58 +84,58 @@ confirm()
 	esac
 }
 
-readlower()
+lower()
 {
 	tr [:upper:] [:lower:]
 }
 
-readupper()
+upper()
 {
 	tr [:lower:] [:upper:]
 }
 
-v1()
+col_1()
 {
 	grep $2 $1 | awk -F'\t+' '{print $2}'
 }
 
-v2()
+col_2()
 {
 	grep $2 $1 | awk -F'\t+' '{print $3}'
 }
 
-v3()
+col_3()
 {
 	grep $2 $1 | awk -F'\t+' '{print $4}'
 }
 
-v4()
+col_4()
 {
 	grep $2 $1 | awk -F'\t+' '{print $5}'
 }
 
 
-r1()
+linecol_1()
 {
 	printf %s "$1" | awk -F'\t+' '{print $1}'
 }
 
-r2()
+linecol_2()
 {
 	printf %s "$1" | awk -F'\t+' '{print $2}'
 }
 
-r3()
+linecol_3()
 {
 	printf %s "$1" | awk -F'\t+' '{print $3}'
 }
 
-r4()
+linecol_4()
 {
 	printf %s "$1" | awk -F'\t+' '{print $4}'
 }
 
-line_need_skip()
+need_skip_line()
 {
 	case "$1" in
 	'' | \#*)
@@ -147,18 +147,18 @@ line_need_skip()
 	esac
 }
 
-ini_section()
+ini_block()
 {
 	perl -ne "print if /^\[$1\]$/ .. /^\[end$1\]$/ and !/^\[.*\]$/" $2
 }
 
-ini_section_st()
+ini_block_st()
 {
-	ret=$(ini_section $1 $2)
+	str=$(ini_block $1 $2)
 
-	if [ -z "$ret" ]; then
+	if [ -z "$str" ]; then
 		die "no matching section $1 found in $2"
 	fi
 
-	printf '%s\n' "$ret"
+	printf '%s\n' "$str"
 }

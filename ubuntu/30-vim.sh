@@ -1,8 +1,8 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && [[ $(which vim) == $HOME* ]]; then
-	log 'Compiling Vim ... Skipped'
+if ! test_force_run && [[ $(which vim) == $HOME* ]]; then
+	info 'Compiling Vim ... Skipped'
 	exit
 fi
 
@@ -23,4 +23,4 @@ make -j
 
 make install
 
-log 'Compiling Vim ... OK'
+info 'Compiling Vim ... OK'

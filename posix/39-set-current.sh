@@ -3,12 +3,12 @@
 
 name=$(basename $ctree)
 
-if ! exec_is_force && setup_is_done; then
-	log "Linking \`$name' to 'current' ... Skipped"
+if ! test_force_run && test_init_done; then
+	info "Linking \`$name' to 'current' ... Skipped"
 	exit
 fi
 
 ln -snf $name current
 
-setup_done
-log "Linking \`$name' to 'current' ... OK"
+mark_init_done
+info "Linking \`$name' to 'current' ... OK"

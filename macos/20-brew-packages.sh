@@ -1,8 +1,8 @@
 #!/bin/zsh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Installing homebrew packages ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Installing homebrew packages ... Skipped'
 	exit
 fi
 
@@ -14,9 +14,9 @@ while read line; do
 		continue
 	fi
 
-	name=$(r1 "$line")
-	cask=$(r2 "$line")
-	prefix=$(r3 "$line")
+	name=$(linecol_1 "$line")
+	cask=$(linecol_2 "$line")
+	prefix=$(linecol_3 "$line")
 
 	if [[ $cask && $cask == 'cask' ]]; then
 		brew install --cask $name
@@ -33,5 +33,5 @@ while read line; do
 	fi
 done < $CONFIG_ROOT/brew.list
 
-setup_done
-log 'Installing homebrew packages ... OK'
+mark_init_done
+info 'Installing homebrew packages ... OK'

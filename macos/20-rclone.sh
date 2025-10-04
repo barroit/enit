@@ -1,12 +1,12 @@
 #!/bin/zsh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Installing rclone ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Installing rclone ... Skipped'
 	exit
 fi
 
 curl https://rclone.org/install.sh | sudo bash
 
-setup_done
-log 'Installing rclone ... OK'
+mark_init_done
+info 'Installing rclone ... OK'

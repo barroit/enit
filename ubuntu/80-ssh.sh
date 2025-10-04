@@ -1,8 +1,8 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done || ! virt; then
-	log 'Configuring ssh server ... Skipped'
+if ! test_force_run && test_init_done || ! test_vm; then
+	info 'Configuring ssh server ... Skipped'
 	exit
 fi
 
@@ -16,5 +16,5 @@ EOF
 
 sudo systemctl restart ssh.service
 
-setup_done
-log 'Configuring ssh server ... OK'
+mark_init_done
+info 'Configuring ssh server ... OK'

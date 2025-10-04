@@ -1,24 +1,20 @@
 #!/bin/zsh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if [[ ! $ctree ]]; then
-	exit 128
-fi
-
 source $ctree/../posix/lib39.sh
 
-function current()
+function now()
 {
 	printf '%s\n' $(( $(date +%s) - $(sysctl -n kern.boottime | \
 					  awk '{print $4}' | tr -d ,) ))
 }
 
-function virt()
+function test_vm()
 {
 	test 1 -eq 0
 }
 
-function laptop()
+function test_laptop()
 {
 	test 1 -eq 1
 }

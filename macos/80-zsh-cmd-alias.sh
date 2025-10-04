@@ -1,8 +1,8 @@
 #!/bin/zsh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Aliasing commands ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Aliasing commands ... Skipped'
 	exit
 fi
 
@@ -14,8 +14,8 @@ while read line; do
 		continue
 	fi
 
-	name=$(r1 "$line")
-	cmd=$(r2 "$line")
+	name=$(linecol_1 "$line")
+	cmd=$(linecol_2 "$line")
 	prefix="alias $name"
 
 	if grep -q "$prefix=" ~/.zsh_aliases; then
@@ -35,5 +35,5 @@ if ! grep -Fxq "$lines" ~/.zshrc; then
 	printf '\n%s\n' "$lines" >> ~/.zshrc
 fi
 
-setup_done
-log 'Aliasing commands ... OK'
+mark_init_done
+info 'Aliasing commands ... OK'

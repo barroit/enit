@@ -1,8 +1,8 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Configuring Bash PS1 ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Configuring Bash PS1 ... Skipped'
 	exit
 fi
 
@@ -17,5 +17,5 @@ if ! grep -Fq "$line" ~/.bashrc; then
 	printf '\n%s\n' "$line" >> ~/.bashrc
 fi
 
-setup_done
-log 'Configuring Bash PS1 ... OK'
+mark_init_done
+info 'Configuring Bash PS1 ... OK'

@@ -1,8 +1,8 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Installing pipx packages ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Installing pipx packages ... Skipped'
 	exit
 fi
 
@@ -12,12 +12,12 @@ if ! which pipx >/dev/null; then
 fi
 
 while read line; do
-	if line_need_skip "$line"; then
+	if need_skip_line "$line"; then
 		continue
 	fi
 
 	pipx install $line
 done < $CONFIG_ROOT/pip.list
 
-setup_done
-log 'Installing pipx packages ... OK'
+mark_init_done
+info 'Installing pipx packages ... OK'

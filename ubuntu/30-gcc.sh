@@ -1,16 +1,16 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && [[ $(which gcc) == $HOME* ]]; then
-	log 'Compiling GCC ... Skipped'
+if ! test_force_run && [[ $(which gcc) == $HOME* ]]; then
+	info 'Compiling GCC ... Skipped'
 	exit
 fi
 
-if virt; then
+if test_vm; then
 	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 99
 	sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 99
 
-	log 'Linking GCC ... OK'
+	info 'Linking GCC ... OK'
 	exit
 fi
 
@@ -55,4 +55,4 @@ done
 
 make install
 
-log 'Compiling GCC ... OK'
+info 'Compiling GCC ... OK'

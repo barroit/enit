@@ -1,8 +1,8 @@
 #!/bin/zsh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Copying private keys ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Copying private keys ... Skipped'
 	exit
 fi
 
@@ -32,7 +32,7 @@ for file in $(ls $secret); do
 		dst=~/.ssh/$name
 
 		if ! confirm "decrypt $file to $HOME/.ssh?"; then
-			log "Importing $name ... Skipped"
+			info "Importing $name ... Skipped"
 			continue
 		fi
 
@@ -49,8 +49,8 @@ for file in $(ls $secret); do
 		continue
 	esac
 
-	log "Importing ${name:-$file} ... DONE"
+	info "Importing ${name:-$file} ... DONE"
 done
 
-setup_done
-log 'Copying private keys ... OK'
+mark_init_done
+info 'Copying private keys ... OK'

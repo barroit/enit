@@ -1,25 +1,25 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Installing apt packages ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Installing apt packages ... Skipped'
 	exit
 fi
 
 sudo apt update
 
 while read line; do
-	name=$(r1 "$line")
-	type=$(r2 "$line")
+	name=$(linecol_1 "$line")
+	type=$(linecol_2 "$line")
 
 	case $type in
 	'd')
-		if virt; then
+		if test_vm; then
 			continue
 		fi
 		;;
 	'v')
-		if ! virt; then
+		if ! test_vm; then
 			continue
 		fi
 	esac
@@ -27,5 +27,5 @@ while read line; do
 	sudo apt install -y $name
 done < $CONFIG_ROOT/apt.list
 
-setup_done
-log 'Installing apt packages ... OK'
+mark_init_done
+info 'Installing apt packages ... OK'

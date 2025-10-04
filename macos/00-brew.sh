@@ -1,8 +1,8 @@
 #!/bin/zsh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Installing Homebrew ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Installing Homebrew ... Skipped'
 	exit
 fi
 
@@ -14,5 +14,5 @@ if [[ $? -ne 0 ]]; then
 	exit 128
 fi
 
-setup_done
-log 'Installing Homebrew ... OK'
+mark_init_done
+info 'Installing Homebrew ... OK'

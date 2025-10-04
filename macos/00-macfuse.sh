@@ -1,8 +1,8 @@
 #!/bin/zsh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Installing macfuse ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Installing macfuse ... Skipped'
 	exit
 fi
 
@@ -18,8 +18,8 @@ name=$(basename $url)
 curl -Lo $name $url
 trap 'rm $name; exit' EXIT
 
-setup_done
-log 'Installing rclone ... INCOMPLETE'
+mark_init_done
+info 'Installing rclone ... INCOMPLETE'
 
 note "Restart after manually installing '$name' and
       granting the necessary permission in Privacy & Security"

@@ -1,21 +1,21 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Setting power saver ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Setting power saver ... Skipped'
 	exit
 fi
 
 type=desk
 power=ac
 
-if laptop; then
+if test_laptop; then
 	type=lap
 	power=battery
 fi
 
-blank=$(v1 $CONFIG_ROOT/power-mode ${type}_blank)
-suspend=$(v1 $CONFIG_ROOT/power-mode ${type}_suspend)
+blank=$(col_1 $CONFIG_ROOT/power-mode ${type}_blank)
+suspend=$(col_1 $CONFIG_ROOT/power-mode ${type}_suspend)
 
 gsettings set org.gnome.desktop.session idle-delay $blank
 
@@ -25,5 +25,5 @@ gsettings set org.gnome.settings-daemon.plugins.power \
 gsettings set org.gnome.settings-daemon.plugins.power \
 	  sleep-inactive-$power-type 'suspend'
 
-setup_done
-log 'Setting power mode ... OK'
+mark_init_done
+info 'Setting power mode ... OK'

@@ -1,8 +1,8 @@
 #!/bin/zsh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! exec_is_force && setup_is_done; then
-	log 'Configuring Zsh key bindings ... Skipped'
+if ! test_force_run && test_init_done; then
+	info 'Configuring Zsh key bindings ... Skipped'
 	exit
 fi
 
@@ -21,5 +21,5 @@ while read line; do
 
 done < $CONFIG_ROOT/zsh-key-binding
 
-setup_done
-log 'Configuring Zsh key bindings ... OK'
+mark_init_done
+info 'Configuring Zsh key bindings ... OK'
