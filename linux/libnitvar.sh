@@ -3,3 +3,4 @@
 
 export data=$HOME/.local/share/barroit
 export bin=$HOME/.local/bin
+export vault=/media/$(whoami)/vault
