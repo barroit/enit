@@ -11,12 +11,12 @@ mkdir -p "$data"
 
 test_init_done()
 {
-	test -f $data/$script
+	test -f "$data/$(basename $script)"
 }
 
 mark_init_done()
 {
-	touch $data/$script
+	touch "$data/$(basename $script)"
 }
 
 test_force_run()
