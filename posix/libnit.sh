@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 export script=$1
-export etctree=$rtree/etc
+export etctree=$(realpath $rtree/etc)
 export vartree=$rtree/var
 
 . $ctree/libnitvar.sh
