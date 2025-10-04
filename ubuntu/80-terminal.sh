@@ -6,7 +6,7 @@ if ! test_force_run && test_init_done || test_vm; then
 	exit
 fi
 
-dconf load /org/gnome/terminal/legacy/profiles:/ < $CONFIG_ROOT/gnome-terminal
+dconf load /org/gnome/terminal/legacy/profiles:/ < $vartree/gnome-terminal
 
 mark_init_done
 info 'Configuring GNOME Terminal ... OK'

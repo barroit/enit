@@ -6,7 +6,7 @@ if ! test_force_run && test_init_done || test_vm; then
 	exit
 fi
 
-url=$(cat $CONFIG_ROOT/jb-mono-url)
+url=$(cat $vartree/jb-mono-url)
 zip=$(basename $url)
 
 tmp=$(mktemp -d)

@@ -10,7 +10,7 @@ mkdir -p git
 cd git
 
 if [[ ! -d vim ]]; then
-	git clone $(cat $CONFIG_ROOT/vim-url)
+	git clone $(cat $vartree/vim-url)
 fi
 
 cd vim/src

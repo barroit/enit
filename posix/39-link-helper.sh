@@ -11,8 +11,8 @@ while read line; do
 		continue
 	fi
 
-	ln -sf $SCRIPT_ROOT/$line $bin/$line
-done <$CONFIG_ROOT/helper.list
+	ln -sf $etctree/script/$line $bin/$line
+done <$vartree/helper.list
 
 mark_init_done
 info 'Installing helper scripts ... OK'

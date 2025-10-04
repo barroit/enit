@@ -14,8 +14,8 @@ if test_laptop; then
 	power=battery
 fi
 
-blank=$(col_1 $CONFIG_ROOT/power-mode ${type}_blank)
-suspend=$(col_1 $CONFIG_ROOT/power-mode ${type}_suspend)
+blank=$(col_1 $vartree/power-mode ${type}_blank)
+suspend=$(col_1 $vartree/power-mode ${type}_suspend)
 
 gsettings set org.gnome.desktop.session idle-delay $blank
 

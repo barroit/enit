@@ -44,7 +44,7 @@ EOF
 systemctl --user daemon-reload
 systemctl --user enable $sysd/wasabi.service
 
-$SCRIPT_ROOT/mount-wasabi.sh
+$etctree/script/mount-wasabi.sh
 
 mark_init_done
 info 'Configuring Wasabi cloud storage ... OK'

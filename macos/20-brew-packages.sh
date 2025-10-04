@@ -31,7 +31,7 @@ while read line; do
 			printf '\n%s\n' "$exp" >> ~/.zshrc
 		fi
 	fi
-done < $CONFIG_ROOT/brew.list
+done < $vartree/brew.list
 
 mark_init_done
 info 'Installing homebrew packages ... OK'

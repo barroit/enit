@@ -19,7 +19,7 @@ while read line; do
 
 	printf '\n%s\n' "$line" >> ~/.zshrc
 
-done < $CONFIG_ROOT/zsh-key-binding
+done < $vartree/zsh-key-binding
 
 mark_init_done
 info 'Configuring Zsh key bindings ... OK'

@@ -39,7 +39,7 @@ cat <<EOF > cc.barroit.wasabi.plist
 
     <key>ProgramArguments</key>
     <array>
-      <string>$SCRIPT_ROOT/wasabi.launchd.sh</string>
+      <string>$etctree/script/wasabi.launchd.sh</string>
     </array>
 
     <key>RunAtLoad</key>

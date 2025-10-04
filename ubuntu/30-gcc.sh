@@ -14,7 +14,7 @@ if test_vm; then
 	exit
 fi
 
-url=$(cat $CONFIG_ROOT/gcc-url)
+url=$(cat $vartree/gcc-url)
 
 mkdir -p ~/git
 cd ~/git

@@ -22,7 +22,7 @@ while read line; do
 	else
 		printf '\n%s\n' "$prefix='$cmd'" >> ~/.bash_aliases
 	fi
-done < $CONFIG_ROOT/cmd-alias
+done < $vartree/cmd-alias
 
 mark_init_done
 info 'Aliasing commands ... OK'

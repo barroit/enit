@@ -12,7 +12,7 @@ if [[ ! -f $dst ]]; then
 	mkdir -p $(dirname $dst)
 fi
 
-curl -Lo $dst $(cat $CONFIG_ROOT/vim-plug-url)
+curl -Lo $dst $(cat $vartree/vim-plug-url)
 
 mark_init_done
 info 'Installing vim plug ... OK'

@@ -25,7 +25,7 @@ while read line; do
 	esac
 
 	sudo apt install -y $name
-done < $CONFIG_ROOT/apt.list
+done < $vartree/apt.list
 
 mark_init_done
 info 'Installing apt packages ... OK'

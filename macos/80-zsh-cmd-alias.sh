@@ -23,7 +23,7 @@ while read line; do
 	else
 		printf '\n%s\n' "$prefix='$cmd'" >> ~/.zsh_aliases
 	fi
-done < $CONFIG_ROOT/cmd-alias
+done < $vartree/cmd-alias
 
 read -d '' lines <<EOF
 if [ -f ~/.zsh_aliases ]; then

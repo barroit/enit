@@ -17,18 +17,18 @@ while read line; do
 	dst_dir=$(linecol_2 "$line")
 
 	if [ -z "$dst_dir" ] || [ "$dst_dir" = - ]; then
-		dst_dir=$(linecol_2 "$(grep $name $CONFIG_ROOT/filemap)")
+		dst_dir=$(linecol_2 "$(grep $name $vartree/filemap)")
 	fi
 
 	if [ -z "$dst_dir" ]; then
-		warn "skipping '$name' as you fucked up '$CONFIG_ROOT/filemap'"
+		warn "skipping '$name' as you fucked '$vartree/filemap' up"
 		continue
 	fi
 
 	dst_dir=$(eval "printf '%s\n' \"$dst_dir\"")
 	mode=$(linecol_3 "$line")
 
-	src=$ASSETS_ROOT/$name
+	src=$etctree/$name
 	dst=$dst_dir/$(basename $name)
 	cmd='ln -sf'
 
@@ -51,7 +51,7 @@ while read line; do
 
 	printf "$fmt" $name "$dst"
 
-done <$CONFIG_ROOT/filemap-$(os_id)
+done <$vartree/filemap-$(os_id)
 
 mark_init_done
 info 'Mapping files ... OK'
