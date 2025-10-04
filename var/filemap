@@ -45,7 +45,3 @@ ssh/config		$HOME/.ssh
 
 vim/.vimrc		$HOME
 vim/barroit.vim		$HOME/.vim/colors
-
-xmodmap/.Xmodmap	$HOME
-
-xorg/xorg.conf		/etc/X11		copy,sudo
