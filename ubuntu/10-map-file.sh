@@ -1,1 +1,0 @@
-../posix/39-map-file.sh
