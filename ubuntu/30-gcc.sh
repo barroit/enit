@@ -2,7 +2,7 @@
 
 set -e
 
-repo=git://gcc.gnu.org/git/gcc.git
+repo=git@github.com:gcc-mirror/gcc.git
 tag=releases/gcc-15.2.0
 
 if ! test_force_run && [ $(which gcc) = $HOME/.local/bin/gcc ]; then
