@@ -3,4 +3,4 @@
 
 powerprofilesctl set performance
 
-info 'Adjusting power mode ... OK'
+info 'Setting power mode to performance ... OK'
