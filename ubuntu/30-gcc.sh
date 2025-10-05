@@ -28,6 +28,7 @@ if [ ! -d gcc ]; then
 fi
 
 cd gcc
+git fetch
 
 old=$(git rev-parse --short HEAD)
 new=$(git rev-parse --short $tag^{})
