@@ -10,7 +10,7 @@ function now()
 
 function test_vm()
 {
-	test $(systemd-detect-test_vm) != none
+	test $(systemd-detect-virt) != none
 }
 
 function test_laptop()
