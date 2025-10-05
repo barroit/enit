@@ -1,4 +1,3 @@
-#!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 if ! test_force_run && test_init_done || ! test_vm; then
