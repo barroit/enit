@@ -1,5 +1,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+set -e
+
+trap 'rm -f .tmp-$$' EXIT
+
 while read line; do
 	if need_skip_line "$line"; then
 		continue
@@ -30,16 +34,17 @@ while read line; do
 		mkdir_cmd="sudo $mkdir_cmd"
 	fi
 
-	eval $mkdir_cmd -p "$dst_dir"
-	eval $ln_cmd $src "$dst"
+	eval $mkdir_cmd -p "$dst_dir" || touch .tmp-$$
+	eval $ln_cmd $src "$dst" || touch .tmp-$$
 
-	if [ $? -eq 1 ]; then
+	if [ -f .tmp-$$ ]; then
 		fmt="${CYAN}%-25s${RESET} -> ${RED}%s${RESET}\n"
 	else
 		fmt="${CYAN}%-25s${RESET} -> ${GREEN}%s${RESET}\n"
 	fi
 
 	printf "$fmt" $name "$dst"
+	rm -f .tmp-$$
 
 done <$vartree/filemap-$(os_id)
 
