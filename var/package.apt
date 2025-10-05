@@ -1,0 +1,59 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# Keep this file up to date by dumping installed packages
+#   $ apt list --installed 2>/dev/null | grep -F '[installed]' | cut -d'/' -f1
+# And filter out preinstalled packages
+#   https://cdimage.ubuntu.com/ubuntu/releases/<version>/release/*.manifest
+
+asciidoc
+autoconf
+automake
+clang
+cmake
+curl
+g++-14
+gcc-14
+gettext
+jq
+libncurses-dev
+libxt-dev
+lld
+lldb
+llvm
+make
+ninja-build
+openssh-server
+pipx
+tree
+wine
+woff2
+
+code			d
+cowsay			d
+fastfetch		d
+fcitx5-mozc		d
+fcitx5-pinyin		d
+fcitx5			d
+feh			d
+ffmpeg			d
+fzf			d
+gimp			d
+gpick			d
+imagemagick		d
+manpages-posix		d
+mingw-w64		d
+mozc-data		d
+mozc-server		d
+mozc-utils-gui		d
+mutt			d
+nmap			d
+nodejs			d
+obs-studio		d
+openjdk-17-jre		d
+openjdk-21-jdk		d
+qbittorrent		d
+rclone			d
+rename			d
+smartmontools		d
+texinfo			d
+texlive-lang-japanese	d
