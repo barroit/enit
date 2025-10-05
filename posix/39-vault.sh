@@ -46,5 +46,4 @@ for file in $(ls $vault); do
 	info "Importing ${name:-$file} ... DONE"
 done
 
-mark_init_done
 info 'Deploying vault items ... OK'

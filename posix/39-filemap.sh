@@ -44,5 +44,4 @@ while read line; do
 
 done <$vartree/filemap-$(os_id)
 
-mark_init_done
 info 'Mapping files ... OK'
