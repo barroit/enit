@@ -30,10 +30,7 @@ fi
 cd gcc
 git fetch
 
-old=$(git rev-parse --short HEAD)
-new=$(git rev-parse --short $tag^{})
-
-if [ $old != $new ]; then
+if ! test_same_commit $tag; then
 	git clean -xdf
 fi
 

@@ -23,6 +23,11 @@ test_force_run()
 	test $script = "$force"
 }
 
+test_same_commit()
+{
+	test $(git rev-parse --short HEAD) = "$(git rev-parse --short $1^{})"
+}
+
 os_id()
 {
 	basename $(dirname $0)
