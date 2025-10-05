@@ -1,8 +1,13 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! test_force_run && [[ $(which gcc) == $HOME* ]]; then
-	info 'Compiling GCC ... Skipped'
+set -e
+
+repo=git://gcc.gnu.org/git/gcc.git
+tag=releases/gcc-15.2.0
+
+if ! test_force_run && [ $(which gcc) = $HOME/.local/bin/gcc ]; then
+	info 'Installing GCC from source ... Skipped'
 	exit
 fi
 
@@ -14,45 +19,49 @@ if test_vm; then
 	exit
 fi
 
-url=$(cat $vartree/gcc-url)
+cd
 
-mkdir -p ~/git
-cd ~/git
+mkdir -p git
+cd git
 
 if [ ! -d gcc ]; then
-	git clone $url
+	git clone $repo
 fi
 
 cd gcc
-git checkout releases/gcc-14.2.0
+
+old=$(git rev-parse --short HEAD)
+new=$(git rev-parse --short $tag^{})
+
+if [ $old != $new ]; then
+	git clean -xdf
+fi
+
+git checkout $tag
 
 ./contrib/download_prerequisites
 
 mkdir -p build
 cd build
 
-if [[ -f Makefile ]]; then
+if [ -f Makefile ]; then
 	make distclean
 fi
 
 CC=gcc-14 CXX=g++-14 ../configure --disable-multilib --prefix=$HOME/.local
 
-retry=0
+trap 'rm -f .retry.tmp' EXIT
 
 while true; do
-	make -j BOOT_CFLAGS='-O2' bootstrap
+	make -j$(nproc) BOOT_CFLAGS='-O2' bootstrap && break || true
 
-	if [[ $? -eq 0 ]]; then
-		break;
-	fi
+	printf '\n' >>.retry.tmp
 
-	(( retry += 1 ))
-
-	if [[ $retry -gt 5 ]]; then
-		die 'too many errors during GCC compilation'
+	if [ $(cat .retry.tmp | wc -l) = 5 ]; then
+		die 'too many errors'
 	fi
 done
 
 make install
 
-info 'Compiling GCC ... OK'
+info 'Installing GCC from source ... OK'
