@@ -4,7 +4,7 @@ set -e
 
 sudo apt update
 
-trap 'rm -f .package.tmp' EXIT
+trap 'rm -f .tmp-$$' EXIT
 
 while read line; do
 	if need_skip_line "$line"; then
@@ -21,9 +21,9 @@ while read line; do
 		fi
 	esac
 
-	printf '%s ' $name >>.package.tmp
+	printf '%s ' $name >>.tmp-$$
 done <$vartree/package.apt
 
-sudo apt install -y $(cat .package.tmp)
+sudo apt install -y $(cat .tmp-$$)
 
 info 'Installing apt packages ... OK'

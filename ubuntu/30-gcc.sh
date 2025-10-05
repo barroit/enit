@@ -47,14 +47,14 @@ fi
 
 CC=gcc-14 CXX=g++-14 ../configure --disable-multilib --prefix=$HOME/.local
 
-trap 'rm -f .retry.tmp' EXIT
+trap 'rm -f .tmp-$$' EXIT
 
 while true; do
 	make -j$(nproc) BOOT_CFLAGS='-O2' bootstrap && break || true
 
-	printf '\n' >>.retry.tmp
+	printf '\n' >>.tmp-$$
 
-	if [ $(cat .retry.tmp | wc -l) = 5 ]; then
+	if [ $(cat .tmp-$$ | wc -l) = 5 ]; then
 		die 'too many errors'
 	fi
 done
