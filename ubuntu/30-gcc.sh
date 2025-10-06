@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-set -e
-
 repo=git@github.com:gcc-mirror/gcc.git
 tag=releases/gcc-15.2.0
 
-if ! test_force_run && [ $(which gcc) = $HOME/.local/bin/gcc ]; then
+set -e
+
+if ! test_force_run && [ $(command -v gcc) = $HOME/.local/bin/gcc ]; then
 	info 'Installing GCC from source ... Skipped'
 	exit
 fi
