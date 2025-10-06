@@ -1,27 +1,28 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+url=https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
+
+set -e
+
 if ! test_force_run && test_init_done || test_vm; then
 	info 'Installing JetBrains Mono ... Skipped'
 	exit
 fi
 
-url=$(cat $vartree/jb-mono-url)
 zip=$(basename $url)
+dst=$HOME/.local/share/fonts/jetbrains-mono
 
-tmp=$(mktemp -d)
-dst=~/.local/share/fonts/jetbrains-mono
+trap 'cd .. && rm -rf .tmp-$$' EXIT
+mkdir .tmp-$$
+cd .tmp-$$
 
-trap 'rm -rf "$tmp"' EXIT
-
-cd $tmp
-
-curl -L -o $zip $url
-unzip $zip
+curl -sLo $zip $url
+unzip -q $zip
 
 rm -rf $dst
 mv fonts $dst
 
-fc-cache -f
+fc-cache $dst
 
 mark_init_done
 info 'Installing JetBrains Mono ... OK'
