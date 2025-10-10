@@ -38,12 +38,12 @@ while read line; do
 	eval $ln_cmd $src "$dst" || touch .tmp-$$
 
 	if [ -f .tmp-$$ ]; then
-		fmt="${CYAN}%-25s${RESET} -> ${RED}%s${RESET}\n"
+		fmt="${RED}%s${RESET} -> %s\n"
 	else
-		fmt="${CYAN}%-25s${RESET} -> ${GREEN}%s${RESET}\n"
+		fmt="${GREEN}%s${RESET} -> %s\n"
 	fi
 
-	printf "$fmt" $name "$dst"
+	printf "$fmt" "$dst" $src
 	rm -f .tmp-$$
 
 done <$vartree/filemap-$(os_id)
