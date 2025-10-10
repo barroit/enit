@@ -3,10 +3,14 @@
 
 source $ctree/../posix/lib39.sh
 
+function __kboottime()
+{
+	sysctl -n kern.boottime | cut -d' ' -f4 | cut -d',' -f1
+}
+
 function now()
 {
-	printf '%s\n' $(( $(date +%s) - $(sysctl -n kern.boottime | \
-					  awk '{print $4}' | tr -d ,) ))
+	printf '%s\n' $(( $(date +%s) - $(__kboottime) ))
 }
 
 function test_vm()
