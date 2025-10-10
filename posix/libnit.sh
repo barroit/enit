@@ -7,6 +7,7 @@ export vartree=$rtree/var
 . $ctree/libnitvar.sh
 
 mkdir -p "$data"
+mkdir -p "$bin"
 
 test_init_done()
 {
