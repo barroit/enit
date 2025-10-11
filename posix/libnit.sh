@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 export script=$1
+export script_id=${1##$(realpath $rtree/..)/}
 export etctree=$(realpath $rtree/etc)
 export vartree=$rtree/var
 
