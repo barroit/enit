@@ -162,3 +162,8 @@ ini_block_st()
 
 	printf '%s\n' "$str"
 }
+
+on_date()
+{
+	printf 'On %s\n' "$(date '+%a, %b %d, %Y at %H:%M:%S%p %z')"
+}
