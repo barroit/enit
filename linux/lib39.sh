@@ -2,7 +2,7 @@
 
 source $ctree/../posix/lib39.sh
 
-function now()
+function boottime()
 {
 	cut -d' ' -f2 /proc/uptime
 }

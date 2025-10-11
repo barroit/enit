@@ -37,11 +37,11 @@ CYAN='\033[36m'
 WHITE='\033[37m'
 RESET='\033[0m'
 
-def now():
+def boottime():
 	return time.monotonic()
 
 def info(*args):
-	print(f"{BOLD}{GREEN}[{now()}]{RESET}", *args)
+	print(f"{BOLD}{GREEN}[{boottime()}]{RESET}", *args)
 
 def note(*args):
 	print(f"{BOLD}{CYAN}note:{RESET}", *args)

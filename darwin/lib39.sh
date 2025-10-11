@@ -8,7 +8,7 @@ function __kboottime()
 	sysctl -n kern.boottime | cut -d' ' -f4 | cut -d',' -f1
 }
 
-function now()
+function boottime()
 {
 	printf '%s\n' $(( $(date +%s) - $(__kboottime) ))
 }

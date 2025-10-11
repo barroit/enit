@@ -35,7 +35,7 @@ note()
 
 info()
 {
-	printf "${BOLD}${GREEN}[$(now)]${RESET} %s\n" "$@"
+	printf "${BOLD}${GREEN}[$(boottime)]${RESET} %s\n" "$@"
 }
 
 getchar()

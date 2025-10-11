@@ -3,7 +3,7 @@
 
 . $ctree/../posix/lib39.sh
 
-now()
+boottime()
 {
 	perl -MTime::HiRes=time -E 'printf "%.2f\n", time'
 }
