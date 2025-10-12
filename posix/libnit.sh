@@ -46,3 +46,8 @@ require_vault()
 		die "vault not mounted at $vault"
 	fi
 }
+
+wrote()
+{
+	printf '%s, %s wrote:\n' "$(on_date)" $script_id
+}

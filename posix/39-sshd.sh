@@ -8,16 +8,16 @@ fi
 mkdir -p .ssh
 cd .ssh
 
-cat <<-EOF >authorized_keys
-	# $(on_date), $script_id wrote:
-	$(ssh-keygen -y -f $sshd_key)
+cat <<EOF >authorized_keys
+# $(wrote)
+$(ssh-keygen -y -f $sshd_key)
 EOF
 
-cat <<-EOF | sudo tee /etc/ssh/sshd_config.d/39-auth.conf >/dev/null
-	# $(on_date), $script_id wrote:
-	UsePAM yes
-	KbdInteractiveAuthentication no
-	PasswordAuthentication no
+cat <<EOF | sudo tee /etc/ssh/sshd_config.d/39-auth.conf >/dev/null
+# $(wrote)
+UsePAM yes
+KbdInteractiveAuthentication no
+PasswordAuthentication no
 EOF
 
 mark_init_done

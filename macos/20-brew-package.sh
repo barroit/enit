@@ -25,9 +25,8 @@ while read line; do
 
 		if ! grep -q "$pattern" .zshrc; then
 			cat <<-EOF >>.zshrc
-
-				# $(on_date), $script_id wrote:
-				$pattern
+			# $(wrote)
+			$pattern
 			EOF
 		fi
 	fi
