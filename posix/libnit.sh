@@ -39,3 +39,10 @@ kernel_id()
 {
 	basename $(dirname $(realpath $(os_id)/run.sh))
 }
+
+require_vault()
+{
+	if [ ! -d $vault ]; then
+		die "vault not mounted at $vault"
+	fi
+}

@@ -2,9 +2,7 @@
 
 set +e
 
-if [ ! -d $vault ]; then
-	die "vault not mounted to '$vault'"
-fi
+require_vault
 
 for file in $(ls $vault); do
 	case $file in
