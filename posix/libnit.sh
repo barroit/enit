@@ -51,3 +51,19 @@ wrote()
 {
 	printf '%s, %s wrote:\n' "$(on_date)" $script_id
 }
+
+wrote_sh()
+{
+	cat <<-EOF >>$2
+
+	# $(wrote)
+	$1
+	EOF
+}
+
+wrote_on_miss_sh()
+{
+	if ! grep -xqF "$1" $2; then
+		wrote_sh "$1" $2
+	fi
+}

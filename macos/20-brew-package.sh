@@ -5,13 +5,10 @@ set +e
 brew update
 touch .zshrc
 
-while read line; do
-	if need_skip_line "$line"; then
+while read name search; do
+	if need_skip_line "$name"; then
 		continue
 	fi
-
-	name=$(linecol_1 "$line")
-	search=$(linecol_2 "$line")
 
 	brew install $name
 
@@ -21,14 +18,7 @@ while read line; do
 	fi
 
 	if [ -n "$search" ]; then
-		pattern="export PATH=\"$search:\$PATH\""
-
-		if ! grep -q "$pattern" .zshrc; then
-			cat <<-EOF >>.zshrc
-			# $(wrote)
-			$pattern
-			EOF
-		fi
+		wrote_on_miss_sh "export PATH=\"$search:\$PATH\"" .zshrc
 	fi
 
 done < $vartree/package.brew
