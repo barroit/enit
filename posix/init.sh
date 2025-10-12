@@ -44,8 +44,11 @@ scripts=${scripts:-$(find $stree -name [0-9][0-9]-*.sh | sort)}
 
 for script in $scripts; do
 	$stree/run.sh $script
+	res=$?
 
-	if [ $? -ne 0 ]; then
+	if [ $res -eq 39 ]; then
+		die "$(basename $script) interrupts $(basename $0)"
+	elif [ $res -ne 0 ]; then
 		warn "$(basename $script) interrupted"
 	fi
 done
