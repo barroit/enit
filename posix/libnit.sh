@@ -34,3 +34,8 @@ os_id()
 {
 	basename $(dirname $script)
 }
+
+kernel_id()
+{
+	basename $(dirname $(realpath $(os_id)/run.sh))
+}
