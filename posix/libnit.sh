@@ -32,5 +32,5 @@ test_same_commit()
 
 os_id()
 {
-	basename $(dirname $0)
+	basename $(dirname $script)
 }
