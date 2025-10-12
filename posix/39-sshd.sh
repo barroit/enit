@@ -5,8 +5,8 @@ if ! test_force_run && test_init_done; then
 	exit
 fi
 
-mkdir -p $HOME/.ssh
-cd $HOME/.ssh
+mkdir -p .ssh
+cd .ssh
 
 cat <<-EOF >authorized_keys
 	# $(on_date), $script_id wrote:

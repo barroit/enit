@@ -45,9 +45,10 @@ fi
 scripts=${scripts:-$(find $stree -name [0-9][0-9]-*.sh | sort)}
 
 trap 'rm -f .tmp-$$' EXIT
+printf 'Set working directory to %s\n' $HOME
 
 for script in $scripts; do
-	$stree/run.sh $script && >.tmp-$$ || printf '%s\n' $? >.tmp-$$
+	cd && $stree/run.sh $script && >.tmp-$$ || printf '%s\n' $? >.tmp-$$
 
 	res=$(cat .tmp-$$)
 

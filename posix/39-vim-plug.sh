@@ -7,7 +7,7 @@ if ! test_force_run && test_init_done; then
 	exit
 fi
 
-plug=$HOME/.vim/autoload/plug.vim
+plug=.vim/autoload/plug.vim
 
 mkdir -p $(dirname $plug)
 curl -o $plug $download

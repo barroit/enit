@@ -5,8 +5,6 @@ if ! test_force_run && test_init_done; then
 	exit
 fi
 
-cd
-
 cat <<EOF | sudo tee /etc/tmpfiles.d/user-dir.conf
 d	/tmp/desktop	0700	$USER	$USER	-
 d	/tmp/download	0700	$USER	$USER	-

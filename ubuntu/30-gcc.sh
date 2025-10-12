@@ -16,8 +16,6 @@ if test_vm; then
 	exit
 fi
 
-cd
-
 mkdir -p git
 cd git
 

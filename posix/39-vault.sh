@@ -27,7 +27,7 @@ for file in $(ls $vault); do
 		fi
 
 		name=${file%.gpg}
-		dst=$HOME/.ssh/$name
+		dst=.ssh/$name
 
 		gpg --yes --output $dst --decrypt $vault/$file
 

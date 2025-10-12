@@ -3,7 +3,7 @@
 set +e
 
 brew update
-touch $HOME/.zshrc
+touch .zshrc
 
 while read line; do
 	if need_skip_line "$line"; then
@@ -23,8 +23,8 @@ while read line; do
 	if [ -n "$search" ]; then
 		pattern="export PATH=\"$search:\$PATH\""
 
-		if ! grep -q "$pattern" $HOME/.zshrc; then
-			cat <<-EOF >>$HOME/.zshrc
+		if ! grep -q "$pattern" .zshrc; then
+			cat <<-EOF >>.zshrc
 
 				# $(on_date), $script_id wrote:
 				$pattern

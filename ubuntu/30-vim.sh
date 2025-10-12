@@ -8,8 +8,6 @@ if ! test_force_run && [ $(command -v vim) = $HOME/.local/bin/vim ]; then
 	exit
 fi
 
-cd
-
 mkdir -p git
 cd git
 
