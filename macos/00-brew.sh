@@ -9,8 +9,4 @@ fi
 
 /bin/bash -c "$(curl -fsSL $url)"
 
-if [ $? -ne 0 ]; then
-	exit 1
-fi
-
 info 'Installing Homebrew ... OK'

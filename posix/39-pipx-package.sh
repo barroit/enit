@@ -1,7 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-set -e
-
 if ! command -v pipx >/dev/null; then
 	die "pipx's missing in current shell execution environment"
 fi

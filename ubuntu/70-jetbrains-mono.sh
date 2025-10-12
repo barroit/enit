@@ -2,8 +2,6 @@
 
 url=https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
 
-set -e
-
 if ! test_force_run && test_init_done || test_vm; then
 	info 'Installing JetBrains Mono ... Skipped'
 	exit

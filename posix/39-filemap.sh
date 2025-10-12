@@ -1,7 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-set -e
-
 trap 'rm -f .tmp-$$' EXIT
 
 while read line; do

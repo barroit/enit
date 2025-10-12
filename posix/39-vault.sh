@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+set +e
+
 if [ ! -d $vault ]; then
 	die "vault not mounted to '$vault'"
 fi

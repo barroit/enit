@@ -3,8 +3,6 @@
 repo=git@github.com:vim/vim.git
 tag=v9.1.1830
 
-set -e
-
 if ! test_force_run && [ $(command -v vim) = $HOME/.local/bin/vim ]; then
 	info 'Installing Vim from source ... Skipped'
 	exit

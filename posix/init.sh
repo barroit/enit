@@ -1,6 +1,8 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+set -e
+
 export stree=$(realpath $(dirname $0))
 export ptree=$(dirname $(realpath $0))
 export rtree=$(dirname $ptree)
@@ -42,13 +44,16 @@ fi
 
 scripts=${scripts:-$(find $stree -name [0-9][0-9]-*.sh | sort)}
 
-for script in $scripts; do
-	$stree/run.sh $script
-	res=$?
+trap 'rm -f .tmp-$$' EXIT
 
-	if [ $res -eq 39 ]; then
+for script in $scripts; do
+	$stree/run.sh $script && >.tmp-$$ || printf '%s\n' $? >.tmp-$$
+
+	res=$(cat .tmp-$$)
+
+	if [ "$res" = 39 ]; then
 		die "$(basename $script) interrupts $(basename $0)"
-	elif [ $res -ne 0 ]; then
+	elif [ -n "$res" ]; then
 		warn "$(basename $script) interrupted"
 	fi
 done

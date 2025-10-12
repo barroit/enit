@@ -1,7 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-set -e
-
 sudo apt update
 
 trap 'rm -f .tmp-$$' EXIT

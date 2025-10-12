@@ -3,8 +3,6 @@
 repo=git@github.com:gcc-mirror/gcc.git
 tag=releases/gcc-15.2.0
 
-set -e
-
 if ! test_force_run && [ $(command -v gcc) = $HOME/.local/bin/gcc ]; then
 	info 'Installing GCC from source ... Skipped'
 	exit
