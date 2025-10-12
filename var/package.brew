@@ -1,0 +1,17 @@
+autoconf
+cmake
+discord
+fastfetch
+gnupg
+google-chrome
+lld
+llvm			/opt/homebrew/opt/llvm/bin
+make			/opt/homebrew/opt/make/libexec/gnubin
+man-db			/opt/homebrew/opt/man-db/libexec/bin
+mutt
+ninja
+pipx
+python3
+visual-studio-code
+vmware-fusion
+zstd
