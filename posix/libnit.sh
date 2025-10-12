@@ -22,7 +22,7 @@ mark_init_done()
 
 test_force_run()
 {
-	test $script = "$force"
+	printf '%s\n' $force | grep -xqF $script
 }
 
 test_same_commit()

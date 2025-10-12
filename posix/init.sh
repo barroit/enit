@@ -17,32 +17,32 @@ if [ -n "$1" ]; then
 		name=${name#+}
 	fi
 
-	case $name in
-	[0-9][0-9]-*)
-		scripts=$(find $stree -name $name | sort)
-		;;
-	*)
-		scripts=$(find $stree -name [0-9][0-9]-$name*.sh | sort)
-		;;
-	esac
+	trap 'rm -f .script-$$' EXIT
+	find $stree -name "[0-9][0-9]-$name*" >.script-$$
 
-	if [ -z "$scripts" ]; then
+	if [ ! -s .script-$$ ]; then
 		die "unknown script '$name'"
 	fi
 
-	if [ $(printf '%s\n' $scripts | wc -l) -ne 1 ]; then
-		lines=$(printf '%s\n' $scripts | xargs -n1 basename)
+	if [ $(wc -l <.script-$$) -gt 1 ] &&
+	   grep -qv '\.[0-9]\.sh' .script-$$; then
+	   	lines=$(cat .script-$$ | xargs -n1 basename)
 		lines=$(printf '\n  %s' $lines)
 
-		die "ambiguous script '$name'; could be:$lines"
+		die "ambiguous name '$name', can be:$lines"
 	fi
+
+	scripts=$(cat .script-$$)
 
 	if [ $force_marker ]; then
 		export force=$scripts
 	fi
+
+	rm .script-$$
 fi
 
-scripts=${scripts:-$(find $stree -name [0-9][0-9]-*.sh | sort)}
+scripts=${scripts:-$(find $stree -name [0-9][0-9]-*.sh)}
+scripts=$(printf '%s\n' $scripts | LC_ALL=C sort)
 
 trap 'rm -f .tmp-$$' EXIT
 printf 'Set working directory to %s\n' $HOME
