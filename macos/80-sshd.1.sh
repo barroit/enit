@@ -2,3 +2,5 @@
 
 sudo systemsetup -setremotelogin on
 sudo launchctl kickstart -k system/com.openssh.sshd
+
+info 'Restarting sshd ... OK'
