@@ -46,6 +46,6 @@ while read line; do
 	printf "$fmt" "$dst" $src
 	rm -f .tmp-$$
 
-done <$vartree/filemap-$(os_id $0)
+done <$vartree/filemap-$(os_id)
 
 info 'Mapping files ... OK'
