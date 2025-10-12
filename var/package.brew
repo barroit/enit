@@ -12,6 +12,7 @@ mutt
 ninja
 pipx
 python3
+rclone
 visual-studio-code
 vmware-fusion
 zstd
