@@ -1,1 +1,0 @@
-../posix/39-pipx-packages.sh
