@@ -14,16 +14,16 @@ if ! confirm 'enabled reduced security'; then
 	exit 39
 fi
 
-trap 'rm -f .release.$$' EXIT
+trap 'rm -f .tmp-$$' EXIT
 curl -sL \
      -H 'Accept: application/vnd.github+json' \
      -H 'X-GitHub-Api-Version: 2022-11-28' \
-     "$endpoint" >.release.$$
+     "$endpoint" >.tmp-$$
 
-tag=$(jq -r '.[0].tag_name' .release.$$)
+tag=$(jq -r '.[0].tag_name' .tmp-$$)
 name=$tag.dmg
 url=$(jq -r '.[0].assets.[] |
-	     select(.name == "'$name'").browser_download_url' .release.$$)
+	     select(.name == "'$name'").browser_download_url' .tmp-$$)
 
 trap 'rm -f $name' EXIT
 curl -sLo $name $url
