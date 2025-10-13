@@ -7,3 +7,5 @@ export bin=$HOME/.local/bin
 export vault=/media/$(whoami)/vault
 
 export sshd_key=$(test_vm && printf id_lvm_noble || printf id_dev_ubuntu)
+
+export dotsh=.bash
