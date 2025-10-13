@@ -94,24 +94,19 @@ upper()
 	tr [:lower:] [:upper:]
 }
 
-col_1()
+col_2()
 {
 	grep $2 $1 | awk -F'\t+' '{print $2}'
 }
 
-col_2()
+col_3()
 {
 	grep $2 $1 | awk -F'\t+' '{print $3}'
 }
 
-col_3()
-{
-	grep $2 $1 | awk -F'\t+' '{print $4}'
-}
-
 col_4()
 {
-	grep $2 $1 | awk -F'\t+' '{print $5}'
+	grep $2 $1 | awk -F'\t+' '{print $4}'
 }
 
 
