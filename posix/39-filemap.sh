@@ -2,23 +2,18 @@
 
 trap 'rm -f .tmp-$$' EXIT
 
-while read line; do
-	if need_skip_line "$line"; then
+while IFS=$(printf '\t') read conf dir mode; do
+	if need_skip_line "$conf"; then
 		continue
 	fi
 
-	name=$(linecol_1 "$line")
-	dst_dir=$(linecol_2 "$line")
-
-	if [ -z "$dst_dir" ] || [ "$dst_dir" = - ]; then
-		dst_dir=$(linecol_2 "$(grep $name $vartree/filemap)")
+	if [ -z "$dir" ] || [ "$dir" = - ]; then
+		dir=$(col_2 $vartree/filemap $conf)
 	fi
 
-	dst_dir=$(eval printf '%s' "$dst_dir")
-	mode=$(linecol_3 "$line")
-
-	src=$etctree/$name
-	dst=$dst_dir/$(basename $name)
+	dir=$(eval "printf '%s\n' \"$dir\"")
+	src=$etctree/$conf
+	dst="$dir/$(basename $conf)"
 
 	ln_cmd='ln -sf'
 	mkdir_cmd=mkdir
@@ -32,8 +27,8 @@ while read line; do
 		mkdir_cmd="sudo $mkdir_cmd"
 	fi
 
-	eval $mkdir_cmd -p "$dst_dir" || touch .tmp-$$
-	eval $ln_cmd $src "$dst" || touch .tmp-$$
+	eval "$mkdir_cmd -p \"$dir\"" || touch .tmp-$$
+	eval "$ln_cmd $src \"$dst\"" || touch .tmp-$$
 
 	if [ -f .tmp-$$ ]; then
 		fmt="${RED}%s${RESET} -> %s\n"
