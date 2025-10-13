@@ -1,5 +1,16 @@
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
+# ctrl on macbook keyboard is control + fn
 
-bindkey "^[[1;5D" backward-word
-bindkey "^[[1;5C" forward-word
+# home
+bindkey '^[[H' beginning-of-line
+
+# end
+bindkey '^[[F' end-of-line
+
+# ctrl + left
+bindkey '^[[1;5D' backward-word
+
+# ctrl + right
+bindkey '^[[1;5C' forward-word
+
+# ctrl + delete
+bindkey '^[[3;5~' kill-word
