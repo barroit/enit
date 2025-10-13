@@ -3,7 +3,7 @@
 set +e
 
 brew update
-touch .zshenv
+touch .zprofile
 
 while read name search; do
 	if need_skip_line "$name"; then
@@ -18,7 +18,7 @@ while read name search; do
 	fi
 
 	if [ -n "$search" ]; then
-		wrote_on_miss_sh "export PATH=\"$search:\$PATH\"" .zshenv
+		wrote_on_miss_sh "export PATH=\"$search:\$PATH\"" .zprofile
 	fi
 
 done < $vartree/package.brew
