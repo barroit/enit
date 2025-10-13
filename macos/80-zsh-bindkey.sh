@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-touch .zsh_bindkey
 touch .zshrc
+touch .zsh_bindkey
 
 while read line; do
 	if need_skip_line "$line"; then
@@ -12,6 +12,6 @@ while read line; do
 
 done <$vartree/bindkey.zsh
 
-wrote_on_miss_sh 'test -f $HOME/.zsh_bindkey && . $HOME/.zsh_bindkey' .zshrc
+wrote_on_miss_sh '[ -f $HOME/.zsh_bindkey ] && . $HOME/.zsh_bindkey' .zshrc
 
 info 'Adding Z shell bindkey ... OK'

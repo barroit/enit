@@ -12,6 +12,6 @@ while read name command; do
 
 done <$vartree/aliases
 
-wrote_on_miss_sh 'test -f $HOME/.zsh_aliases && . $HOME/.zsh_aliases' .zshrc
+wrote_on_miss_sh '[ -f $HOME/.zsh_aliases ] && . $HOME/.zsh_aliases' .zshrc
 
 info 'Aliasing commands ... OK'
