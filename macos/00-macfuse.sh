@@ -25,8 +25,9 @@ name=$tag.dmg
 url=$(jq -r '.[0].assets.[] |
 	     select(.name == "'$name'").browser_download_url' .tmp-$$)
 
-trap 'rm -f $name' EXIT
-curl -sLo $name $url
+if [ ! -f $name ]; then
+	curl -sLo $name $url
+fi
 
 note "manually install '$name' and restart to complete installation"
 exit 39
