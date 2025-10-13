@@ -8,6 +8,8 @@ codespell/.codespellrc
 fastfetch/config.jsonc
 fastfetch/dotmiku
 
+ghostty/config
+
 git/.gitconfig
 git/ignore
 

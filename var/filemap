@@ -11,6 +11,8 @@ fastfetch/dotmiku	$HOME/.config/fastfetch
 gdb/gdbinit		$HOME/.config/gdb
 gdb/hexdump.py		$HOME/.config/gdb
 
+ghostty/config		$HOME/.config/ghostty
+
 git/.gitconfig		$HOME
 git/ignore		$HOME/.config/git
 
