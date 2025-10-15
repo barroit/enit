@@ -1,34 +1,48 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-
-if ! test_force_run && launchctl list | grep -q sh.barroit.wasabi; then
-	info 'Setting up wasabi ... Skipped'
-	exit
-fi
+# Use absolute command path in ProgramArguments, user agent lacks
+# environment.
 
 mkdir -p Library/LaunchAgents
 cd Library/LaunchAgents
 
-cat <<EOF >sh.barroit.wasabi.plist
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
-                       "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-  <dict>
-    <key>Label</key>
-    <string>sh.barroit.wasabi</string>
+while read remote local; do
+	mnt=$(eval printf '%s' $local)
+	id=sh.barroit.wasabi.$(printf '%s' $remote | cut -d':' -f2)
+	plist=$id.plist
 
-    <key>ProgramArguments</key>
-    <array>
-      <string>$etctree/scripts/wasabi.launchd.sh</string>
-    </array>
+	cat <<-EOF >$plist
+	<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+			       "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+	<plist version="1.0">
+	  <dict>
+	    <key>Label</key>
+	    <string>$id</string>
 
-    <key>RunAtLoad</key>
-    <true/>
-  </dict>
-</plist>
-EOF
+	    <key>ProgramArguments</key>
+	    <array>
+	      <string>$(command -v rclone)</string>
+	      <string>mount</string>
+	      <string>--vfs-cache-mode=full</string>
+	      <string>$remote</string>
+	      <string>$mnt</string>
+	    </array>
 
-launchctl bootout gui/$(id -u) sh.barroit.wasabi.plist 2>/dev/null || true
-launchctl bootstrap gui/$(id -u) sh.barroit.wasabi.plist
+	    <key>KeepAlive</key>
+	    <true/>
+
+	    <key>LaunchOnlyOnce</key>
+	    <true/>
+
+	    <key>StandardErrorPath</key>
+	    <string>$HOME/Library/Logs/$id/error</string>
+	  </dict>
+	</plist>
+	EOF
+
+	if ! launchctl list | grep -q $id; then
+		launchctl bootstrap gui/$(id -u) $plist
+	fi
+
+done <$vartree/wasabi
 
 info 'Setting up wasabi ... OK'
