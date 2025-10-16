@@ -1,29 +1,41 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
+# https://rclone.org/commands/rclone_mount/#rclone-as-unix-mount-helper
 
-if ! test_force_run && systemctl --user is-enabled --quiet wasabi.service; then
-	info 'Setting up wasabi ... Skipped'
-	exit
-fi
+rclone --version >/dev/null
+sudo ln -sf /usr/bin/rclone /sbin/mount.rclone
 
 mkdir -p .config/systemd/user
 cd .config/systemd/user
 
-cat <<EOF >wasabi.service
-[Unit]
-Wants=network-online.target
-After=network-online.target
+while read remote local; do
+	local=$(eval printf %s $local)
+	dotmount=$(printf %s.mount ${local#/} | tr / -)
 
-[Service]
-ExecStart=$etctree/scripts/wasabi.sh mount
-ExecStop=$etctree/scripts/wasabi.sh umount
-RemainAfterExit=yes
-Type=oneshot
+	mkdir -p $local
 
-[Install]
-WantedBy=default.target
-EOF
+	cat <<-EOF >$dotmount
+	[Unit]
+	Wants=network-online.target
+	After=network-online.target
 
-systemctl --user daemon-reload
-systemctl --user enable --now wasabi.service
+	[Mount]
+	Type=rclone
+	What=$remote
+	Where=$local
+	Options=vfs-cache-mode=full
+
+	[Install]
+	WantedBy=default.target
+	EOF
+
+	if ! systemctl --user is-enabled --quiet $dotmount; then
+		systemctl --user enable --now home-barroit-wasabi.mount
+
+	else
+		systemctl --user daemon-reload
+		systemctl --user restart $dotmount
+	fi
+
+done <$vartree/wasabi
 
 info 'Setting up wasabi ... OK'
