@@ -1,0 +1,5 @@
+# class	idle	suspend
+
+ac	0	1800
+
+battery	300	600
