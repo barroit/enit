@@ -3,6 +3,7 @@ cmake
 coreutils		/opt/homebrew/opt/coreutils/libexec/gnubin
 discord
 fastfetch
+font-jetbrains-mono
 gnupg
 google-chrome
 lld
