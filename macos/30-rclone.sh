@@ -6,6 +6,6 @@ if ! test_force_run && [ "$(command -v rclone)" = /usr/local/bin/rclone ]; then
 	exit
 fi
 
-curl https://rclone.org/install.sh | sudo bash
+sudo -v && curl https://rclone.org/install.sh | sudo bash
 
 info 'Installing rclone ... OK'
