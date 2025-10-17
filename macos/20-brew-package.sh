@@ -10,7 +10,7 @@ while read name search; do
 		continue
 	fi
 
-	brew install $name
+	sh -c "brew install $name"
 
 	if [ $? -ne 0 ]; then
 		warn "failed to install '$name'"
@@ -21,6 +21,6 @@ while read name search; do
 		wrote_on_miss_sh "export PATH=\"$search:\$PATH\"" .zprofile
 	fi
 
-done < $vartree/package.brew
+done <$vartree/package.brew
 
 info 'Installing Homebrew packages ... OK'
