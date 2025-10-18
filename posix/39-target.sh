@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+cd $rtree
+
 rm -f target
 ln -s $(kernel_id) target
 
