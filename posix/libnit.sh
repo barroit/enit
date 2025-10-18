@@ -37,7 +37,7 @@ os_id()
 
 kernel_id()
 {
-	basename $(dirname $(realpath $(os_id)/run.sh))
+	basename $(dirname $(realpath $stree/run.sh))
 }
 
 require_vault()
