@@ -2,6 +2,6 @@
 
 touch .zshrc
 
-wrote_on_miss_sh 'autoload -U bashcompinit && bashcompinit' .zshrc
+wrote_on_miss_sh 'eval "$(register-python-argcomplete pipx)"' .zshrc
 
-info 'Adding bash autocompletion compatibility for Z shell ... OK'
+info 'Adding pipx autocompletion to Z shell ... OK'

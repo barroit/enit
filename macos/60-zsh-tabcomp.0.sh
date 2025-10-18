@@ -3,5 +3,6 @@
 touch .zshrc
 
 wrote_on_miss_sh 'autoload -Uz compinit && compinit' .zshrc
+wrote_on_miss_sh 'autoload -U bashcompinit && bashcompinit' .zshrc
 
 info 'Adding Z shell autocompletion ... OK'
