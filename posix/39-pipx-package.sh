@@ -19,4 +19,6 @@ while read line; do
 	pipx install $line
 done <$vartree/package.pip
 
+pipx ensurepath
+
 info 'Installing pipx packages ... OK'
