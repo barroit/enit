@@ -29,7 +29,7 @@ while read remote local; do
 	EOF
 
 	if ! systemctl --user is-enabled --quiet $dotmount; then
-		systemctl --user enable --now home-barroit-wasabi.mount
+		systemctl --user enable --now $dotmount
 
 	else
 		systemctl --user daemon-reload
