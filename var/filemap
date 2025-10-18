@@ -16,8 +16,6 @@ ghostty/config		$HOME/.config/ghostty
 git/.gitconfig		$HOME
 git/ignore		$HOME/.config/git
 
-gpg/gpg.conf		$HOME/.gnupg
-
 mutt/.mailcap		$HOME
 mutt/.muttrc		$HOME
 mutt/.signature		$HOME
