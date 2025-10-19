@@ -8,7 +8,7 @@ precmd()
 {
 	PS1=\$(git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
 	       printf '\[\e]0;\h+\$SHLVL: \w (%s)\a\]\\$ ' \
-		      \$(git branch --show-current) ||
+		      \$(git rev-parse --abbrev-ref HEAD) ||
 	       printf '\[\e]0;\h+\$SHLVL: \w\a\]\\$ ');
 }
 EOF
