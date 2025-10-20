@@ -10,6 +10,8 @@ while read remote local; do
 	id=sh.barroit.wasabi.$(printf '%s' $remote | cut -d':' -f2)
 	plist=$id.plist
 
+	mkdir -p $mnt
+
 	cat <<-EOF >$plist
 	<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
 			       "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
