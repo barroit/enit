@@ -55,6 +55,6 @@ for script in $scripts; do
 	if [ "$res" = 39 ]; then
 		die "$(basename $script) interrupts $(basename $0)"
 	elif [ -n "$res" ]; then
-		warn "$(basename $script) interrupted"
+		warn "$(basename $script) interrupted" || true
 	fi
 done
