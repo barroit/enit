@@ -4,6 +4,8 @@ coreutils		/opt/homebrew/opt/coreutils/libexec/gnubin
 discord
 fastfetch
 font-jetbrains-mono
+git			/opt/homebrew/opt/git/bin
+git-lfs			/opt/homebrew/opt/git-lfs/bin
 gnupg
 google-chrome
 lld
