@@ -5,7 +5,7 @@ touch ${dotsh}_command
 wrote_on_miss_sh "$(cat <<EOF | oneline
 branch_now()
 {
-	git rev-parse --abbrev-ref HEAD 2>/dev/null || true
+	git rev-parse --abbrev-ref HEAD 2>/dev/null || true;
 }
 EOF
 )" ${dotsh}_command
