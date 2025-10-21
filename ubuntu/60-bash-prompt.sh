@@ -3,12 +3,11 @@
 touch .bashrc
 touch .bash_prompt
 
-wrote_on_miss_sh "$(cat <<EOF | tr -d '\t' | tr -s '\n' ' '
+wrote_on_miss_sh "$(cat <<EOF | oneline
 precmd()
 {
 	PS1=\$(git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-	       printf '\[\e]0;\h+\$SHLVL: \w (%s)\a\]\\$ ' \
-		      \$(git rev-parse --abbrev-ref HEAD) ||
+	       printf '\[\e]0;\h+\$SHLVL: \w (%s)\a\]\\$ ' \$(branch_now) ||
 	       printf '\[\e]0;\h+\$SHLVL: \w\a\]\\$ ');
 }
 EOF

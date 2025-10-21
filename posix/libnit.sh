@@ -67,3 +67,8 @@ wrote_on_miss_sh()
 		wrote_sh "$1" $2
 	fi
 }
+
+oneline()
+{
+	tr -d '\t' | tr -s '\n' ' ' | sed 's/ *$//'
+}

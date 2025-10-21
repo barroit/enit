@@ -5,11 +5,11 @@ touch .zsh_prompt
 
 wrote_on_miss_sh "PS1='%# '" .zsh_prompt
 
-wrote_on_miss_sh "$(cat <<EOF | tr -d '\t' | tr '\n' ' '
+wrote_on_miss_sh "$(cat <<EOF | oneline
 precmd()
 {
 	git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-	print -nP "\\033]0;%m+%L: %~ (\$(git rev-parse --abbrev-ref HEAD))\a" ||
+	print -nP "\\033]0;%m+%L: %~ (\$(branch_now))\a" ||
 	print -nP '\\033]0;%m+%L: %~\a';
 }
 EOF
