@@ -16,5 +16,6 @@ mutt
 ninja
 pipx
 python3
+texlive
 visual-studio-code
 zstd
