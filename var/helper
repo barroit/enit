@@ -6,6 +6,8 @@ fix-license.sh
 
 merge.sh
 
-move-wip.sh
+mvtree.sh
 
-mutt-use.sh
+mutt.sh
+
+lfs-rclone.sh
