@@ -2,6 +2,6 @@
 
 touch .zshrc
 
-wrote_on_miss_sh 'setopt HIST_IGNORE_DUPS' .zshrc
+write_on_miss_sh 'setopt HIST_IGNORE_DUPS' .zshrc
 
 info 'Setting Z shell history behavior ... OK'

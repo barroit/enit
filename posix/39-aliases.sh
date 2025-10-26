@@ -9,10 +9,10 @@ while read name command; do
 		continue
 	fi
 
-	wrote_on_miss_sh "alias $name='$command'" ${dotsh}_aliases
+	write_on_miss_sh "alias $name='$command'" ${dotsh}_aliases
 done
 
-wrote_on_miss_sh "[ -f \$HOME/${dotsh}_aliases ] && . \$HOME/${dotsh}_aliases" \
+write_on_miss_sh "[ -f \$HOME/${dotsh}_aliases ] && . \$HOME/${dotsh}_aliases" \
 		 ${dotsh}rc
 
 info "Aliasing ${dotsh#.} commands ... OK"

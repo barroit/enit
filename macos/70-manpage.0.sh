@@ -2,6 +2,6 @@
 
 touch .zprofile
 
-wrote_on_miss_sh 'export MANPATH="/$HOME/.local/share/man:$MANPATH"' .zprofile
+write_on_miss_sh 'export MANPATH="/$HOME/.local/share/man:$MANPATH"' .zprofile
 
 info 'Updating MANPATH ... OK'

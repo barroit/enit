@@ -2,6 +2,6 @@
 
 touch .zshrc
 
-wrote_on_miss_sh 'eval "$(register-python-argcomplete pipx)"' .zshrc
+write_on_miss_sh 'eval "$(register-python-argcomplete pipx)"' .zshrc
 
 info 'Adding pipx autocompletion to Z shell ... OK'

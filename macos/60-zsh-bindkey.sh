@@ -8,10 +8,10 @@ while read line; do
 		continue
 	fi
 
-	wrote_on_miss_sh "$line" .zsh_bindkey
+	write_on_miss_sh "$line" .zsh_bindkey
 
 done <$vartree/bindkey.zsh
 
-wrote_on_miss_sh '[ -f $HOME/.zsh_bindkey ] && . $HOME/.zsh_bindkey' .zshrc
+write_on_miss_sh '[ -f $HOME/.zsh_bindkey ] && . $HOME/.zsh_bindkey' .zshrc
 
 info 'Adding Z shell bindkey ... OK'

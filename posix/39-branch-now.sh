@@ -2,7 +2,7 @@
 
 touch ${dotsh}_command
 
-wrote_on_miss_sh "$(cat <<EOF | oneline
+write_on_miss_sh "$(cat <<EOF | oneline
 branch_now()
 {
 	git rev-parse --abbrev-ref HEAD 2>/dev/null || true;
@@ -10,7 +10,7 @@ branch_now()
 EOF
 )" ${dotsh}_command
 
-wrote_on_miss_sh "[ -f \$HOME/${dotsh}_command ] && . \$HOME/${dotsh}_command" \
+write_on_miss_sh "[ -f \$HOME/${dotsh}_command ] && . \$HOME/${dotsh}_command" \
 		 ${dotsh}rc
 
 info 'Adding branch_now() ... OK'

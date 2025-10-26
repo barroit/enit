@@ -2,7 +2,7 @@
 
 touch .bashrc
 
-wrote_on_miss_sh 'ulimit -c unlimited' .bashrc
+write_on_miss_sh 'ulimit -c unlimited' .bashrc
 
 if systemctl status apport.service >/dev/null 2>&1; then
 	sudo systemctl stop apport.service

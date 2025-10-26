@@ -61,7 +61,7 @@ wrote_sh()
 	EOF
 }
 
-wrote_on_miss_sh()
+write_on_miss_sh()
 {
 	if ! grep -xqF "$1" $2; then
 		wrote_sh "$1" $2

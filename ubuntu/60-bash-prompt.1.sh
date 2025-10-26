@@ -3,7 +3,7 @@
 touch .bashrc
 touch .bash_prompt
 
-wrote_on_miss_sh "$(cat <<EOF | oneline
+write_on_miss_sh "$(cat <<EOF | oneline
 precmd()
 {
 	PS1=\$(git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
@@ -13,8 +13,8 @@ precmd()
 EOF
 )" .bash_prompt
 
-wrote_on_miss_sh 'PROMPT_COMMAND=precmd' .bash_prompt
+write_on_miss_sh 'PROMPT_COMMAND=precmd' .bash_prompt
 
-wrote_on_miss_sh '[ -f $HOME/.bash_prompt ] && . $HOME/.bash_prompt' .bashrc
+write_on_miss_sh '[ -f $HOME/.bash_prompt ] && . $HOME/.bash_prompt' .bashrc
 
 info 'Configuring Bash prompt ... OK'

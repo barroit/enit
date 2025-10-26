@@ -3,9 +3,9 @@
 touch .zshrc
 touch .zsh_prompt
 
-wrote_on_miss_sh "PS1='%# '" .zsh_prompt
+write_on_miss_sh "PS1='%# '" .zsh_prompt
 
-wrote_on_miss_sh "$(cat <<EOF | oneline
+write_on_miss_sh "$(cat <<EOF | oneline
 precmd()
 {
 	git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
@@ -15,6 +15,6 @@ precmd()
 EOF
 )" .zsh_prompt
 
-wrote_on_miss_sh '[ -f $HOME/.zsh_prompt ] && . $HOME/.zsh_prompt' .zshrc
+write_on_miss_sh '[ -f $HOME/.zsh_prompt ] && . $HOME/.zsh_prompt' .zshrc
 
 info 'Configuring Z shell prompt ... OK'
