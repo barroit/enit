@@ -9,7 +9,7 @@ write_on_miss_sh "$(cat <<EOF | oneline
 precmd()
 {
 	git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-	print -nP "\\033]0;%m+%L: %~ (\$(branch_now))\a" ||
+	print -nP "\\033]0;%m+%L: %~ (\$(branch_now)\$(branch_stat_dumb))\a" ||
 	print -nP '\\033]0;%m+%L: %~\a';
 }
 EOF

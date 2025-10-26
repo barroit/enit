@@ -7,7 +7,8 @@ write_on_miss_sh "$(cat <<EOF | oneline
 precmd()
 {
 	PS1=\$(git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-	       printf '\[\e]0;\h+\$SHLVL: \w (%s)\a\]\\$ ' \$(branch_now) ||
+	       printf '\[\e]0;\h+\$SHLVL: \w (%s%s)\a\]\\$ ' 
+		      \$(branch_now) "\$(branch_stat_dumb)" ||
 	       printf '\[\e]0;\h+\$SHLVL: \w\a\]\\$ ');
 }
 EOF
