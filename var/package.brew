@@ -1,9 +1,11 @@
 autoconf
+bambu-studio
 cmake
 coreutils		/opt/homebrew/opt/coreutils/libexec/gnubin
 discord
 fastfetch
 font-jetbrains-mono
+freecad
 git			/opt/homebrew/opt/git/bin
 git-lfs			/opt/homebrew/opt/git-lfs/bin
 gnupg
@@ -15,6 +17,7 @@ man-db			/opt/homebrew/opt/man-db/libexec/bin
 mutt
 ninja
 pipx
+prusaslicer
 python3
 texlive
 visual-studio-code
