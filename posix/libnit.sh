@@ -52,21 +52,27 @@ wrote()
 	printf '%s, %s wrote:\n' "$(on_date)" $script_id
 }
 
-write_sh()
-{
-	cat <<-EOF | $pretee tee -a $2 >/dev/null
-
-	# $(wrote)
-	$1
-	EOF
-}
-
 write_on_miss()
-{
-	if ! grep -sxqF "$1" $2; then
-		write_sh "$1" $2
+(
+	trap 'rm -f "$data/.tmp-$$"' EXIT
+
+	if [ -n "$2" ]; then
+		printf '%s\n' "$1" >"$data/.tmp-$$"
+		shift
+	else
+		cat >"$data/.tmp-$$"
 	fi
-}
+
+	if grep -sxqFf "$data/.tmp-$$" $1; then
+		exit
+	fi
+
+	cat <<-EOF | $pretee tee -a $1 >/dev/null
+
+	${prewrote:-#} $(wrote)
+	$(cat "$data/.tmp-$$")
+	EOF
+)
 
 oneline()
 {
