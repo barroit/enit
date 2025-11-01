@@ -1,8 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-touch .bashrc
-touch .bash_prompt
-
 write_on_miss_sh "$(cat <<EOF | oneline
 precmd()
 {

@@ -6,8 +6,6 @@ flatpak remote-add --if-not-exists flathub \
 mkdir -p .config/environment.d
 cd .config/environment.d
 
-touch 39-flatpak.conf
-
 cat <<EOF | while read dir; do
 /var/lib/flatpak/exports/share
 $HOME/.local/share/flatpak/exports/share

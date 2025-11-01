@@ -1,8 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-touch .zshrc
-touch .zsh_prompt
-
 write_on_miss_sh "PS1='%# '" .zsh_prompt
 
 write_on_miss_sh "$(cat <<EOF | oneline

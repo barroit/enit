@@ -1,8 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-touch .zshrc
-touch .zsh_bindkey
-
 while read line; do
 	if need_skip_line "$line"; then
 		continue

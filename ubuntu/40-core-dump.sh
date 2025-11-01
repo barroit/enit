@@ -1,7 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-touch .bashrc
-
 write_on_miss_sh 'ulimit -c unlimited' .bashrc
 
 if systemctl status apport.service >/dev/null 2>&1; then

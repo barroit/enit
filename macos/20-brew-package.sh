@@ -3,7 +3,6 @@
 set +e
 
 brew update
-touch .zprofile
 
 while read name search; do
 	if need_skip_line "$name"; then
