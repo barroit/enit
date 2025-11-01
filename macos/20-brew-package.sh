@@ -17,7 +17,7 @@ while read name search; do
 	fi
 
 	if [ -n "$search" ]; then
-		write_on_miss_sh "export PATH=\"$search:\$PATH\"" .zprofile
+		write_on_miss "export PATH=\"$search:\$PATH\"" .zprofile
 	fi
 
 done <$vartree/package.brew

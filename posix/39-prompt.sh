@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-write_on_miss_sh "$(cat <<EOF | oneline
+write_on_miss "$(cat <<EOF | oneline
 branch_detached()
 {
 	! git symbolic-ref HEAD >/dev/null 2>&1;
@@ -8,7 +8,7 @@ branch_detached()
 EOF
 )" ${dotsh}_prompt
 
-write_on_miss_sh "$(cat <<EOF | oneline
+write_on_miss "$(cat <<EOF | oneline
 branch_diverged()
 (
 	exec >/dev/null 2>&1 &&
@@ -19,7 +19,7 @@ branch_diverged()
 EOF
 )" ${dotsh}_prompt
 
-write_on_miss_sh "$(cat <<EOF | oneline
+write_on_miss "$(cat <<EOF | oneline
 branch_synced()
 (
 	exec >/dev/null 2>&1 &&
@@ -29,7 +29,7 @@ branch_synced()
 EOF
 )" ${dotsh}_prompt
 
-write_on_miss_sh "$(cat <<EOF | oneline
+write_on_miss "$(cat <<EOF | oneline
 branch_modified()
 (
 	exec >/dev/null 2>&1 &&
@@ -40,7 +40,7 @@ branch_modified()
 EOF
 )" ${dotsh}_prompt
 
-write_on_miss_sh "$(cat <<EOF | oneline
+write_on_miss "$(cat <<EOF | oneline
 branch_now()
 {
 	git rev-parse --abbrev-ref HEAD 2>/dev/null || true;
@@ -48,7 +48,7 @@ branch_now()
 EOF
 )" ${dotsh}_prompt
 
-write_on_miss_sh "$(cat <<EOF | oneline
+write_on_miss "$(cat <<EOF | oneline
 branch_stat_dumb()
 {
 	branch_detached || branch_diverged && printf '!' ||
@@ -58,7 +58,7 @@ branch_stat_dumb()
 EOF
 )" ${dotsh}_prompt
 
-write_on_miss_sh "[ -f \$HOME/${dotsh}_prompt ] && . \$HOME/${dotsh}_prompt" \
+write_on_miss "[ -f \$HOME/${dotsh}_prompt ] && . \$HOME/${dotsh}_prompt" \
 		 ${dotsh}rc
 
 info 'Adding branch helper ... OK'

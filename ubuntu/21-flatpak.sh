@@ -10,6 +10,6 @@ cat <<EOF | while read dir; do
 /var/lib/flatpak/exports/share
 $HOME/.local/share/flatpak/exports/share
 EOF
-	write_on_miss_sh "XDG_DATA_DIRS=\"$dir:\$XDG_DATA_DIRS\"" \
+	write_on_miss "XDG_DATA_DIRS=\"$dir:\$XDG_DATA_DIRS\"" \
 			 39-flatpak.conf
 done

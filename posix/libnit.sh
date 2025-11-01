@@ -61,7 +61,7 @@ write_sh()
 	EOF
 }
 
-write_on_miss_sh()
+write_on_miss()
 {
 	if ! grep -sxqF "$1" $2; then
 		write_sh "$1" $2
