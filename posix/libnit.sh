@@ -52,9 +52,9 @@ wrote()
 	printf '%s, %s wrote:\n' "$(on_date)" $script_id
 }
 
-wrote_sh()
+write_sh()
 {
-	cat <<-EOF >>$2
+	cat <<-EOF | $pretee tee -a $2 >/dev/null
 
 	# $(wrote)
 	$1
@@ -64,7 +64,7 @@ wrote_sh()
 write_on_miss_sh()
 {
 	if ! grep -sxqF "$1" $2; then
-		wrote_sh "$1" $2
+		write_sh "$1" $2
 	fi
 }
 
