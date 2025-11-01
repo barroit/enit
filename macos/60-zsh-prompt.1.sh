@@ -2,7 +2,7 @@
 
 write_on_miss "PS1='%# '" .zsh_prompt
 
-write_on_miss "$(cat <<EOF | oneline
+cat <<EOF | oneline | write_on_miss .zsh_prompt
 precmd()
 {
 	git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
@@ -10,7 +10,6 @@ precmd()
 	print -nP '\\033]0;%m+%L: %~\a';
 }
 EOF
-)" .zsh_prompt
 
 write_on_miss '[ -f $HOME/.zsh_prompt ] && . $HOME/.zsh_prompt' .zshrc
 

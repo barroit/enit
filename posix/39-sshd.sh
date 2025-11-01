@@ -8,10 +8,7 @@ fi
 mkdir -p .ssh
 cd .ssh
 
-cat <<EOF >authorized_keys
-# $(wrote)
-$(ssh-keygen -y -f $sshd_key)
-EOF
+write_on_miss "$(ssh-keygen -y -f $sshd_key)" authorized_keys
 
 cat <<EOF | sudo tee /etc/ssh/sshd_config.d/39-auth.conf >/dev/null
 # $(wrote)
