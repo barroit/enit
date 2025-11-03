@@ -13,6 +13,8 @@ ghostty/config
 git/.gitconfig
 git/ignore
 
+gnupg/gpg-agent.conf
+
 mutt/.mailcap
 mutt/.muttrc
 mutt/.signature
