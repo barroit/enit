@@ -9,6 +9,7 @@ freecad
 git			/opt/homebrew/opt/git/bin
 git-lfs			/opt/homebrew/opt/git-lfs/bin
 gnupg
+go
 google-chrome
 lld
 llvm			/opt/homebrew/opt/llvm/bin
