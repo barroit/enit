@@ -8,4 +8,4 @@ export vault=/Volumes/vault
 
 export sshd_key=id_dev_macos
 
-export dotsh=.zsh
+export shell=zsh

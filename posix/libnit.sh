@@ -7,6 +7,8 @@ export vartree=$rtree/var
 
 . $ctree/libnitvar.sh
 
+export dotsh=.$shell
+
 mkdir -p "$data"
 mkdir -p "$bin"
 
