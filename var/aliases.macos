@@ -1,2 +1,5 @@
 grep	grep --color=auto
 ls	ls --color=auto
+l	ls -CF
+la	ls -A
+ll	ls -alF
