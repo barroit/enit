@@ -19,6 +19,8 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 $(sh -c 'command -v ssh') "\$@"
 EOF
 
+chmod +x ssh
+
 gpg-connect-agent reloadagent /bye >/dev/null
 
 info 'Setting ssh agent to gpg-agent ... OK'
