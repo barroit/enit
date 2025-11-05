@@ -18,6 +18,7 @@ while read class name id; do
 		msg=$(head -n1 .tmp-$$ | cut -d: -f3 | lower)
 
 		warn "failed to export $id to $PWD/$pub,$msg" || true
+		rm $pub
 
 	else
 		chmod 0600 $pub
