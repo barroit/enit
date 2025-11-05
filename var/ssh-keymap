@@ -1,0 +1,13 @@
+lvm	windows		AA685DA501C4B2B8
+lvm	noble		AA685DA501C4B2B8
+lvm	freebsd		AA685DA501C4B2B8
+
+# dev	macos		# todo
+# node	raider		# todo
+
+node	lancer		C7E2B46433A7B941
+dev	ubuntu		C7E2B46433A7B941
+
+oci	headnode	31AA9F1266F514E7
+
+com	github		31AA9F1266F514E7
