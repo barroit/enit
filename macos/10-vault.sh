@@ -1,1 +1,0 @@
-../posix/39-vault.sh

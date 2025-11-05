@@ -10,6 +10,6 @@ while read name command; do
 done
 
 write_on_miss "[ -f \$HOME/${dotsh}_aliases ] && . \$HOME/${dotsh}_aliases" \
-		 ${dotsh}rc
+	      ${dotsh}rc
 
 info "Aliasing ${dotsh#.} commands ... OK"
