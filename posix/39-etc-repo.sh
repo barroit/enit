@@ -10,4 +10,9 @@ cd etc
 
 git remote set-url origin git@github.com:barroit/etc.git
 
-info 'Cloning etc.git ... OK'
+files=$(grep filter=etc .gitattributes | awk '{ print $1 }')
+
+rm -f $files
+git restore -- $files
+
+info 'Deploying etc.git ... OK'
