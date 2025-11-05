@@ -10,7 +10,7 @@ while read id grip; do
 	gpg-connect-agent "keyattr $grip Use-for-ssh: true" /bye >.tmp-$$
 
 	if ! grep -xqF 'OK' .tmp-$$; then
-		warn "failed to enable key $id for ssh, $(cat .tmp-$$)"
+		warn "failed to enable key $id for ssh, $(cat .tmp-$$)" || true
 	else
 		info "enabled gpg key $id for ssh"
 	fi
