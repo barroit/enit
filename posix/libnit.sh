@@ -92,3 +92,23 @@ skip()
 	info "${1:-$INFO_MESG} ... Skipped"
 	exit
 }
+
+init_ok()
+{
+	mark_init_done
+	ok
+}
+
+skip_inited()
+{
+	if ! test_force_run && test_init_done; then
+		skip
+	fi
+}
+
+skip_installed()
+{
+	if ! test_force_run && command -v $1 >/dev/null; then
+		skip
+	fi
+}
