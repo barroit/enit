@@ -55,4 +55,4 @@ EOF
 write_on_miss "[ -f \$HOME/${dotsh}_prompt ] && . \$HOME/${dotsh}_prompt" \
 	      ${dotsh}rc
 
-info 'Adding branch helper ... OK'
+ok "Adding git helper to $shell"

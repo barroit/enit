@@ -1,14 +1,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! test_force_run && test_init_done; then
-	info 'Configuring sshd ... Skipped'
-	exit
-fi
+INFO_MESG='Configuring sshd'
 
-mkdir -p .ssh
-cd .ssh
-
-write_on_miss "$(ssh-keygen -y -f $sshd_key)" authorized_keys
+! test_force_run && [ -s /etc/ssh/sshd_config.d/39-auth.conf ] && skip
 
 cat <<EOF | sudo tee /etc/ssh/sshd_config.d/39-auth.conf >/dev/null
 # $(wrote)
@@ -17,5 +11,4 @@ KbdInteractiveAuthentication no
 PasswordAuthentication no
 EOF
 
-mark_init_done
-info 'Configuring sshd ... OK'
+init_ok

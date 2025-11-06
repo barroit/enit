@@ -45,7 +45,7 @@ kernel_id()
 require_vault()
 {
 	if [ ! -d $vault ]; then
-		die "vault not mounted at $vault"
+		die "vault is not found at $vault"
 	fi
 }
 

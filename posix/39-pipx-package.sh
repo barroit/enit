@@ -1,9 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! command -v pipx >/dev/null; then
-	die "pipx's missing in current shell execution environment"
-fi
-
 trap 'rm -f .tmp-$$' EXIT
 pipx list --short >.tmp-$$
 
@@ -17,8 +13,7 @@ while read line; do
 	fi
 
 	pipx install $line
+
 done <$vartree/package.pip
 
-pipx ensurepath
-
-info 'Installing pipx packages ... OK'
+ok 'Installing pipx packages'

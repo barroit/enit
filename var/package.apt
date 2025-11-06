@@ -23,7 +23,6 @@ llvm
 make
 ninja-build
 openssh-server
-pipx
 tree
 wine
 woff2
@@ -36,7 +35,6 @@ fcitx5-pinyin		d
 fcitx5			d
 feh			d
 ffmpeg			d
-flatpak			d
 fzf			d
 gimp			d
 gpick			d

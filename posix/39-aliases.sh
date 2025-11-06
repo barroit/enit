@@ -7,9 +7,10 @@ while read name command; do
 	fi
 
 	write_on_miss "alias $name='$command'" ${dotsh}_aliases
+
 done
 
 write_on_miss "[ -f \$HOME/${dotsh}_aliases ] && . \$HOME/${dotsh}_aliases" \
 	      ${dotsh}rc
 
-info "Aliasing ${dotsh#.} commands ... OK"
+ok "Aliasing $shell commands"

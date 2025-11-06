@@ -6,6 +6,8 @@ export bin=$HOME/.local/bin
 
 export vault=/Volumes/vault
 
-export sshd_key=id_dev_macos
+export pub_key=AE318A77605AB3CE
+
+export hostname=macos.dev
 
 export shell=zsh

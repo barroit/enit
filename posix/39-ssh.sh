@@ -1,5 +1,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+INFO_MESG='Wrapping ssh'
+
+! test_force_run && [ $(command -v ssh) = $HOME/.local/bin/ssh ] && skip
+
 mkdir -p .local/bin
 cd .local/bin
 
@@ -16,4 +20,4 @@ EOF
 
 chmod +x ssh
 
-info 'Wrapping ssh ... OK'
+ok

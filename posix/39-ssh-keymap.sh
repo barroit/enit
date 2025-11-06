@@ -26,4 +26,4 @@ while read class name id; do
 
 done <$vartree/ssh-keymap
 
-info 'Deploying ssh key ... OK'
+ok 'Deploying ssh key'

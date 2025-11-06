@@ -3,6 +3,10 @@
 # Don't put these into .profile or .zprofile. Well zsh treats every shell as
 # login shell by default, bash does not.
 
+INFO_MESG='Setting ssh agent to gpg-agent'
+
+skip_inited
+
 write_on_miss 'export GPG_TTY=$(tty)' ${dotsh}_agent
 
 write_on_miss 'export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)' \
@@ -13,4 +17,4 @@ write_on_miss "[ -f \$HOME/${dotsh}_agent ] && . \$HOME/${dotsh}_agent" \
 
 gpg-connect-agent reloadagent /bye >/dev/null
 
-info 'Setting ssh agent to gpg-agent ... OK'
+init_ok

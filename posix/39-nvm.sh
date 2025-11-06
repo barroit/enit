@@ -1,9 +1,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if ! test_force_run && [ -x .nvm/nvm.sh ]; then
-	info 'Installing nvm ... Skipped'
-	exit
-fi
+INFO_MESG='Installing nvm'
+
+skip_installed nvm
 
 trap 'rm -f .tmp-$$' EXIT
 curl -sL \
@@ -15,4 +14,4 @@ tag=$(jq -r '.[0].name' .tmp-$$)
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$tag/install.sh | bash
 
-info 'Installing nvm ... OK'
+ok

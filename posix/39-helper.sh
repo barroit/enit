@@ -17,6 +17,7 @@ while read name; do
 
 	ln -sf $src $tar
 	printf "${GREEN}%-${pad}s${RESET} -> %s\n" $tar $src
+
 done <$vartree/helper
 
-info 'Installing helper scripts ... OK'
+ok 'Installing helper scripts'

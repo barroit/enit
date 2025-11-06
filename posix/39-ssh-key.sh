@@ -17,4 +17,4 @@ while read id grip; do
 
 done <$vartree/ssh-key
 
-info 'Push gpg key to ssh agent ... OK'
+ok 'Push gpg keys to ssh agent'

@@ -27,18 +27,17 @@ while IFS=$(printf '\t') read conf dir mode; do
 		mkdir_cmd="sudo $mkdir_cmd"
 	fi
 
-	eval "$mkdir_cmd -p \"$dir\"" || touch .tmp-$$
-	eval "$ln_cmd $src \"$dst\"" || touch .tmp-$$
+	eval "$mkdir_cmd -p \"$dir\"" 2>>.tmp-$$
+	eval "$ln_cmd $src \"$dst\"" 2>>.tmp-$$
 
-	if [ -f .tmp-$$ ]; then
+	if [ -s .tmp-$$ ]; then
 		fmt="${RED}%s${RESET} -> %s\n"
 	else
 		fmt="${GREEN}%s${RESET} -> %s\n"
 	fi
 
 	printf "$fmt" "$dst" $src
-	rm -f .tmp-$$
 
 done <$vartree/filemap-$(os_id)
 
-info 'Mapping files ... OK'
+ok 'Mapping files'
