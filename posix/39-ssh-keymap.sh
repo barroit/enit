@@ -21,7 +21,6 @@ while read class name id; do
 		rm $pub
 
 	else
-		chmod 0600 $pub
 		info "exported $id to $PWD/$pub"
 	fi
 
