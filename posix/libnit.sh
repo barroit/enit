@@ -80,3 +80,15 @@ oneline()
 {
 	tr -d '\t' | tr -s '\n' ' ' | sed 's/ *$//'
 }
+
+ok()
+{
+	info "${1:-$INFO_MESG} ... OK"
+	exit
+}
+
+skip()
+{
+	info "${1:-$INFO_MESG} ... Skipped"
+	exit
+}
