@@ -1,0 +1,20 @@
+Script Ordering
+===============
+
+10  etc repo
+
+20  package managers
+
+30  package installs
+
+40  manual installs
+
+50  shell layer
+
+60  system config
+
+70  per-program config
+
+80  disable logic
+
+90  misc
