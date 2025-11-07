@@ -4,20 +4,10 @@ sudo apt update
 
 trap 'rm -f .tmp-$$' EXIT
 
-while read line; do
-	if need_skip_line "$line"; then
+while read name; do
+	if need_skip_line "$name"; then
 		continue
 	fi
-
-	name=$(linecol_1 "$line")
-	type=$(linecol_2 "$line")
-
-	case $type in
-	'd')
-		if test_vm; then
-			continue
-		fi
-	esac
 
 	printf '%s ' $name >>.tmp-$$
 

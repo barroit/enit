@@ -10,10 +10,22 @@ autoconf
 automake
 clang
 cmake
+code
+cowsay
 curl
+fastfetch
+fcitx5
+fcitx5-mozc
+fcitx5-pinyin
+feh
+ffmpeg
+fzf
 g++-14
 gcc-14
 gettext
+gimp
+gpick
+imagemagick
 jq
 libncurses-dev
 libxt-dev
@@ -21,38 +33,25 @@ lld
 lldb
 llvm
 make
+manpages-posix
+mingw-w64
+mozc-data
+mozc-server
+mozc-utils-gui
+mutt
 ninja-build
+nmap
+nodejs
+obs-studio
+openjdk-17-jre
+openjdk-21-jdk
 openssh-server
+qbittorrent
+rclone
+rename
+smartmontools
+texinfo
+texlive-lang-japanese
 tree
 wine
 woff2
-
-code			d
-cowsay			d
-fastfetch		d
-fcitx5-mozc		d
-fcitx5-pinyin		d
-fcitx5			d
-feh			d
-ffmpeg			d
-fzf			d
-gimp			d
-gpick			d
-imagemagick		d
-manpages-posix		d
-mingw-w64		d
-mozc-data		d
-mozc-server		d
-mozc-utils-gui		d
-mutt			d
-nmap			d
-nodejs			d
-obs-studio		d
-openjdk-17-jre		d
-openjdk-21-jdk		d
-qbittorrent		d
-rclone			d
-rename			d
-smartmontools		d
-texinfo			d
-texlive-lang-japanese	d
