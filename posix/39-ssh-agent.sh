@@ -7,13 +7,12 @@ INFO_MESG='Setting ssh agent to gpg-agent'
 
 skip_inited
 
-write_on_miss 'export GPG_TTY=$(tty)' ${dotsh}_agent
+write_on_miss 'export GPG_TTY=$(tty)' ${dotsh}rc
 
-write_on_miss 'export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)' \
-	      ${dotsh}_agent
-
-write_on_miss "[ -f \$HOME/${dotsh}_agent ] && . \$HOME/${dotsh}_agent" \
-	      ${dotsh}rc
+cat <<'EOF' | oneline | write_on_miss ${dotsh}rc
+[ -z "$SSH_CONNECTION" ] &&
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+EOF
 
 gpg-connect-agent reloadagent /bye >/dev/null
 
