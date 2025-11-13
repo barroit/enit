@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-source $ctree/../posix/lib39.sh
+function lib39dir()
+{
+	dirname $(realpath ${BASH_SOURCE[0]})
+}
+
+source $(lib39dir)/../posix/lib39.sh
 
 function boottime()
 {
