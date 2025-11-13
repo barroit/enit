@@ -1,0 +1,1 @@
+../posix/39-which-lib39.sh
