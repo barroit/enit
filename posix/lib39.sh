@@ -49,7 +49,7 @@ getchar()
 	eval "$1="
 
 	while true; do
-		c=$(dd bs=1 count=1 2>/dev/null; echo .)
+		c=$(dd bs=1 count=1 2>/dev/null; printf '.\n')
 		c=${c%.}
 
 		if [ -z "$c" ]; then
