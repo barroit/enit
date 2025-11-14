@@ -6,4 +6,4 @@ skip_inited
 
 write_on_miss "export PATH=\"$HOME/.local/bin:\$PATH\"" .zshrc
 
-ok
+init_ok
