@@ -3,7 +3,7 @@
 
 function lib39dir()
 {
-	dirname $(realpath $(print -P %x))
+	dirname $(realpath ${(%):-%x})
 }
 
 source $(lib39dir)/../posix/lib39.sh
