@@ -76,11 +76,6 @@ write_on_miss()
 	EOF
 )
 
-oneline()
-{
-	tr -d '\t' | tr -s '\n' ' ' | sed 's/ *$//'
-}
-
 ok()
 {
 	info "${1:-$INFO_MESG} ... OK"

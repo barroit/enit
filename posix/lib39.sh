@@ -162,3 +162,8 @@ on_date()
 {
 	printf 'On %s\n' "$(date '+%a, %b %d, %Y at %H:%M:%S%p %z')"
 }
+
+oneline()
+{
+	tr -d '\t' | tr -s '\n' ' ' | sed 's/ *$//'
+}
