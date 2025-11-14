@@ -6,55 +6,80 @@ set -e
 export stree=$(realpath $(dirname $0))
 export ptree=$(dirname $(realpath $0))
 export rtree=$(dirname $ptree)
+export dotforce=$stree/.force-$$
+
+cd $stree
 
 . $ptree/lib39.sh
 
-if [ -n "$1" ]; then
-	name=$1
+trap 'rm -f .tmp-$$ $dotforce \
+      $stree/.find-$$ $stree/.script-$$ $stree/.task-$$' EXIT
 
-	if [ $(printf %.1s $name) = '+' ]; then
-		force_marker=1
-		name=${name#+}
+while [ $# -gt 0 ]; do
+	argcpy=$1
+	name=${1#+}
+
+	prefix=
+	suffix=
+
+	if ! expr "$name" : '[0-9][0-9]-.*' >/dev/null &&
+	   ! expr "$name" : '\[0-9\]\[0-9\]-.*' >/dev/null; then
+		prefix=[0-9][0-9]-
+		name=$prefix$name
 	fi
 
-	trap 'rm -f .script-$$' EXIT
-	find $stree -name "[0-9][0-9]-$name*" >.script-$$
-
-	if [ ! -s .script-$$ ]; then
-		die "unknown script '$name'"
+	if ! expr "$name" : '.*\*.*' >/dev/null &&
+	   ! expr "$name" : '.*\.sh' >/dev/null; then
+		suffix=*
+		name=$name$suffix
 	fi
 
-	if [ $(wc -l <.script-$$) -gt 1 ] &&
-	   grep -qv '\.[0-9]\.sh' .script-$$; then
-	   	lines=$(cat .script-$$ | xargs -n1 basename)
-		lines=$(printf '\n  %s' $lines)
+	find $stree -name "$name" >.find-$$
 
-		die "ambiguous name '$name', can be:$lines"
+	if [ $(wc -l <.find-$$) -gt 1 ] && [ -n "$suffix" ]; then
+		sed 's/\.[0-9]\.sh$//' .find-$$ >.tmp-$$
+
+		if grep -q '\.sh$' .tmp-$$ ||
+		   grep -xqFv $(head -n1 .tmp-$$) .tmp-$$; then
+			scripts=$(cat .find-$$ | xargs -n1 basename)
+			scripts=$(printf '\n  %s' $scripts)
+
+			die "ambiguous name '$argcpy', can be:$scripts"
+		fi
 	fi
 
-	scripts=$(cat .script-$$)
-
-	if [ $force_marker ]; then
-		export force=$scripts
+	if [ ! -s .find-$$ ]; then
+		die "no matching script found for '$argcpy'"
 	fi
 
-	rm .script-$$
+	dup=/dev/null
+
+	if [ "$(printf %.1s "$argcpy")" = + ]; then
+		dup=$dotforce
+	fi
+
+	cat .find-$$ | tee -a .script-$$ >>$dup
+	shift
+done
+
+if [ ! -s .script-$$ ]; then
+	find $stree -name '[0-9][0-9]-*.sh' >.script-$$
 fi
 
-scripts=${scripts:-$(find $stree -name [0-9][0-9]-*.sh)}
-scripts=$(printf '%s\n' $scripts | LC_ALL=C sort)
+LC_ALL=C sort <.script-$$ >.task-$$
 
-trap 'rm -f .tmp-$$' EXIT
 printf 'Set working directory to %s\n' $HOME
 
-for script in $scripts; do
-	cd && $stree/run.sh $script && >.tmp-$$ || printf '%s\n' $? >.tmp-$$
+while read script; do
+	cd
+	>.tmp-$$
 
-	res=$(cat .tmp-$$)
+	$stree/run.sh $script || printf '%s\n' $? >.tmp-$$
 
-	if [ "$res" = 39 ]; then
+	if grep -xqF 39 .tmp-$$; then
 		die "$(basename $script) interrupts $(basename $0)"
-	elif [ -n "$res" ]; then
+	elif [ -s .tmp-$$ ]; then
 		warn "$(basename $script) interrupted" || true
 	fi
-done
+
+done <.task-$$

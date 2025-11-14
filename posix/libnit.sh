@@ -24,7 +24,7 @@ mark_init_done()
 
 test_force_run()
 {
-	printf '%s\n' $force | grep -xqF $script
+	grep -xqsF $script $dotforce
 }
 
 test_same_commit()
