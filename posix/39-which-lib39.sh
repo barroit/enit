@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-INFO_MESG='Generating lib39 helper'
+INFO_MESG="Writing which-lib39 to $bin"
 
 skip_installed which-lib39
 

@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-INFO_MESG='Generating helper for locating absolute path of script directory'
+INFO_MESG="Writing which-absdir to $bin"
 
 skip_installed which-absdir
 

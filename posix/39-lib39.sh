@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-INFO_MESG='Generating lib39'
+INFO_MESG='Linking lib39 headers to lib39/'
 
 ! test_force_run && [ -d $rtree/lib39 ] && skip
 

@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-INFO_MESG='Generating helper for locating script directory'
+INFO_MESG="Writing which-dir to $bin"
 
 skip_installed which-dir
 
