@@ -142,20 +142,14 @@ need_skip_line()
 	esac
 }
 
-ini_block()
+blk39_find()
 {
-	perl -ne "print if /^\[$1\]$/ .. /^\[end$1\]$/ and !/^\[.*\]$/" $2
+	perl -ne "print if /^\[$1\]$/ .. /^\[\/$1\]$/ and !/^\[.*\]$/" $2
 }
 
-ini_block_st()
+blk39_keys()
 {
-	str=$(ini_block $1 $2)
-
-	if [ -z "$str" ]; then
-		die "no matching section $1 found in $2"
-	fi
-
-	printf '%s\n' "$str"
+	grep '^\[[^/].*\]$' $1 | tr -d []
 }
 
 on_date()
