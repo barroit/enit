@@ -1,15 +1,22 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-ESC="$(printf '\033')"
-TAB="$(printf '\011')"
-BOLD="${ESC}[1m"
-RED="${ESC}[31m"
-YELLOW="${ESC}[33m"
-GREEN="${ESC}[32m"
-CYAN="${ESC}[36m"
-WHITE="${ESC}[37m"
-RESET="${ESC}[0m"
+ESC=$(printf '\033')
+TAB=$(printf '\011')
+
+LF=$(printf '\012y')
+CRLF=$(printf '\015')$LF
+
+LF=${LF%y}
+CRLF=${CRLF%y}
+
+BOLD=${ESC}[1m
+RED=${ESC}[31m
+YELLOW=${ESC}[33m
+GREEN=${ESC}[32m
+CYAN=${ESC}[36m
+WHITE=${ESC}[37m
+RESET=${ESC}[0m
 
 die()
 {
@@ -161,4 +168,9 @@ on_date()
 oneline()
 {
 	tr -d '\t' | tr -s '\n' ' ' | sed 's/ *$//'
+}
+
+urlsafe()
+{
+	{ [ -n "$1" ] && printf '%s' "$1" || cat; } | jq -Rr @uri
 }
