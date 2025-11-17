@@ -1,49 +1,24 @@
 barroit/.lowprior	$HOME
 
-code/keybindings.json	$HOME/.config/Code/User
-code/settings.json	$HOME/.config/Code/User
+code/*	$HOME/.config/Code/User
 
 codespell/.codespellrc	$HOME
 
-fastfetch/config.jsonc	$HOME/.config/fastfetch
-fastfetch/dotmiku	$HOME/.config/fastfetch
+fastfetch/*	$HOME/.config/fastfetch
 
-gdb/gdbinit		$HOME/.config/gdb
-gdb/hexdump.py		$HOME/.config/gdb
+gdb/*	$HOME/.config/gdb
 
-ghostty/config		$HOME/.config/ghostty
+ghostty/config	$HOME/.config/ghostty
 
-git/.gitconfig		$HOME
-git/ignore		$HOME/.config/git
+git/.gitconfig	$HOME
+git/ignore	$HOME/.config/git
 
 gnupg/gpg-agent.conf	$HOME/.gnupg
 
-mutt/.mailcap		$HOME
-mutt/.muttrc		$HOME
-mutt/.signature		$HOME
-mutt/oauth2.py		$HOME/.mutt
-mutt/auth.oauth2	$HOME/.mutt
-mutt/auth.password	$HOME/.mutt
+mutt/.*	$HOME
+mutt/*	$HOME/.mutt
 
-mutt/@gmail.com			$HOME/.mutt
-mutt/@naver.com			$HOME/.mutt
-mutt/@outlook.com		$HOME/.mutt
-mutt/@sunjiamu@outlook.com	$HOME/.mutt
+ssh/config	$HOME/.ssh
 
-mutt/barroit@linux.com			$HOME/.mutt
-mutt/sunjiamu@outlook.com		$HOME/.mutt
-mutt/client.sunjiamu@outlook.com	$HOME/.mutt
-
-mutt/barroit39@gmail.com		$HOME/.mutt
-mutt/client.barroit39@gmail.com		$HOME/.mutt
-
-mutt/barroit@naver.com			$HOME/.mutt
-mutt/client.barroit@naver.com		$HOME/.mutt
-
-mutt/j25232sj@edu.tuis.ac.jp		$HOME/.mutt
-mutt/client.j25232sj@edu.tuis.ac.jp	$HOME/.mutt
-
-ssh/config		$HOME/.ssh
-
-vim/.vimrc		$HOME
-vim/barroit.vim		$HOME/.vim/colors
+vim/.vimrc	$HOME
+vim/barroit.vim	$HOME/.vim/colors

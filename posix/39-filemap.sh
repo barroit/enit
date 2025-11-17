@@ -1,42 +1,44 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-trap 'rm -f .tmp-$$' EXIT
+trap 'rm -f .err-$$' EXIT
 
-while IFS=$(printf '\t') read conf dir mode; do
-	if need_skip_line "$conf"; then
+cd $etctree
+
+while IFS=$TAB read name outdir mode; do
+	if need_skip_line "$name"; then
 		continue
 	fi
 
-	if [ -z "$dir" ] || [ "$dir" = - ]; then
-		dir=$(col_2 $vartree/filemap $conf)
+	if [ -z "$outdir" ] || [ "$outdir" = - ]; then
+		outdir=$(col_2 $vartree/filemap $name)
 	fi
 
-	dir=$(eval "printf '%s\n' \"$dir\"")
-	src=$etctree/$conf
-	dst="$dir/$(basename $conf)"
+	outdir=$(eval "printf %s \"$outdir\"")
+	indir=$(dirname "$name")
 
-	ln_cmd='ln -sf'
-	mkdir_cmd=mkdir
+	ln='ln -sf'
+	mkdir=mkdir
 
-	if printf "%s\n" $mode | grep -q copy; then
-		ln_cmd=cp
+	if printf %s "$mode" | sed 's/,/\n/' | grep -xqF copy; then
+		ln=cp
 	fi
 
-	if printf '%s\n' $mode | grep -q sudo; then
-		ln_cmd="sudo $ln_cmd"
-		mkdir_cmd="sudo $mkdir_cmd"
+	if printf %s "$mode" | sed 's/,/\n/' | grep -xqF sudo; then
+		sudo=sudo
 	fi
 
-	eval "$mkdir_cmd -p \"$dir\"" 2>>.tmp-$$
-	eval "$ln_cmd $src \"$dst\"" 2>>.tmp-$$
+	eval "$sudo $mkdir -p '$outdir'" 2>.err-$$ &&
+	eval "$sudo $ln $PWD/$name '$outdir'" 2>.err-$$ || true
 
-	if [ -s .tmp-$$ ]; then
-		fmt="${RED}%s${RESET} -> %s\n"
+	if [ -s .err-$$ ]; then
+		fmt="%s $BOLD$RED==>$RESET %s\n"
+		cat .err-$$ >&2
 	else
-		fmt="${GREEN}%s${RESET} -> %s\n"
+		fmt="%s $BOLD$GREEN==>$RESET %s\n"
 	fi
 
-	printf "$fmt" "$dst" $src
+	printf '%s\n' $name | \
+	xargs -I{} sh -c "printf '$fmt' \"$outdir/\$(basename {})\" $PWD/{}"
 
 done <$vartree/filemap-$(os_id)
 
