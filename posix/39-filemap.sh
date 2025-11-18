@@ -10,7 +10,7 @@ while IFS=$TAB read name outdir mode; do
 	fi
 
 	if [ -z "$outdir" ] || [ "$outdir" = - ]; then
-		outdir=$(col_2 $vartree/filemap $name)
+		outdir=$(grep -F "$name" $vartree/filemap | cut -f2)
 	fi
 
 	outdir=$(eval "printf %s \"$outdir\"")
