@@ -6,7 +6,7 @@ export bin=$HOME/.local/bin
 
 export vault=/Volumes/vault
 
-export pub_key=AE318A77605AB3CE
+export pub_key=D23179B998CE8CF1
 
 export hostname=macos.dev
 

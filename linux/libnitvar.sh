@@ -6,7 +6,7 @@ export bin=$HOME/.local/bin
 
 export vault=/media/$(whoami)/vault
 
-export pub_key=C7E2B46433A7B941
+export pub_key=D23179B998CE8CF1
 
 export hostname=ubuntu.dev
 
