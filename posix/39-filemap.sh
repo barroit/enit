@@ -37,8 +37,11 @@ read_config_patched filemap | while IFS=$TAB read name outdir mode; do
 		fmt="%s $BOLD$GREEN==>$RESET %s\n"
 	fi
 
-	printf '%s\n' $name | \
-	xargs -I{} sh -c "printf '$fmt' \"$outdir/\$(basename {})\" $PWD/{}"
+	indir=$(printf '%s' $PWD/$indir | sed "s|$HOME|\$HOME|")
+	outdir=$(printf '%s' $outdir | sed "s|$HOME|\$HOME|")
+
+	printf '%s\n' $name | xargs -L1 basename | \
+	xargs -I{} sh -c "printf '$fmt' '$outdir/{}' '$indir/{}'"
 
 done
 
