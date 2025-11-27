@@ -21,6 +21,8 @@ read_config_patched filemap | while IFS=$TAB read name outdir mode; do
 
 	if printf %s "$mode" | sed 's/,/\n/' | grep -xqF copy; then
 		ln=cp
+	elif printf %s "$mode" | sed 's/,/\n/' | grep -xqF hard; then
+		ln='ln -f'
 	fi
 
 	if printf %s "$mode" | sed 's/,/\n/' | grep -xqF sudo; then
