@@ -107,3 +107,8 @@ skip_installed()
 		skip
 	fi
 }
+
+read_config_patched()
+{
+	cat $vartree/$1 $(find $vartree -name $1.$(os_id))
+}

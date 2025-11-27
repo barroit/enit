@@ -4,7 +4,7 @@ trap 'rm -f .err-$$' EXIT
 
 cd $etctree
 
-while IFS=$TAB read name outdir mode; do
+read_config_patched filemap | while IFS=$TAB read name outdir mode; do
 	if need_skip_line "$name"; then
 		continue
 	fi
@@ -40,6 +40,6 @@ while IFS=$TAB read name outdir mode; do
 	printf '%s\n' $name | \
 	xargs -I{} sh -c "printf '$fmt' \"$outdir/\$(basename {})\" $PWD/{}"
 
-done <$vartree/filemap-$(os_id)
+done
 
 ok 'Mapping files'

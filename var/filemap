@@ -1,24 +1,20 @@
 barroit/.lowprior	$HOME
 
-code/*	$HOME/.config/Code/User
-
 codespell/.codespellrc	$HOME
 
-fastfetch/*	$HOME/.config/fastfetch
+fastfetch/*		$HOME/.config/fastfetch
 
-gdb/*	$HOME/.config/gdb
+ghostty/config		$HOME/.config/ghostty
 
-ghostty/config	$HOME/.config/ghostty
-
-git/.gitconfig	$HOME
-git/ignore	$HOME/.config/git
+git/.gitconfig		$HOME
+git/ignore		$HOME/.config/git
 
 gnupg/gpg-agent.conf	$HOME/.gnupg
 
-mutt/.*	$HOME
-mutt/*	$HOME/.mutt
+mutt/.*			$HOME
+mutt/*			$HOME/.mutt
 
-ssh/config	$HOME/.ssh
+ssh/config		$HOME/.ssh
 
-vim/.vimrc	$HOME
-vim/barroit.vim	$HOME/.vim/colors
+vim/.vimrc		$HOME
+vim/barroit.vim		$HOME/.vim/colors
