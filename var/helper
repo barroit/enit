@@ -11,3 +11,4 @@ mvtree.sh
 mutt.sh
 
 lfs-rclone.sh
+lfs-setup-repo.sh
