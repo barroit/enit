@@ -14,7 +14,7 @@ while read remote local; do
 
 	cat <<-EOF >$dotmount
 	[Unit]
-	Requires=network-online.target
+	Wants=network-online.target
 	After=network-online.target
 
 	[Mount]
