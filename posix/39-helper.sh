@@ -5,19 +5,19 @@ find $bin -type l ! -exec test -e {} ';' -print | while read file; do
 	rm $file
 done
 
-pad=$(( $(printf '%s' $bin | wc -m) + 16 ))
+pad=$(( $(printf '%s' $bin | wc -m) + 12 ))
+prefix=$etctree/scripts
 
-while read name; do
-	if need_skip_line "$name"; then
+find $prefix -type f -exec realpath {} + | while read src; do
+	if need_skip_line "$src"; then
 		continue
 	fi
 
-	src=$etctree/scripts/$name
-	tar=$bin/$name
+	name=$(basename $src)
+	dst=$bin/$name
 
-	ln -sf $src $tar
-	printf "${GREEN}%-${pad}s${RESET} -> %s\n" $tar $src
-
-done <$vartree/helper
+	ln -sf $src $dst
+	printf "${GREEN}%-${pad}s${RESET} -> %s\n" $dst $src
+done
 
 ok 'Installing helper scripts'
