@@ -10,7 +10,6 @@ autoconf
 automake
 clang
 cmake
-code
 cowsay
 curl
 fastfetch
