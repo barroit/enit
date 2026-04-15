@@ -17,6 +17,7 @@ make			/opt/homebrew/opt/make/libexec/gnubin
 man-db			/opt/homebrew/opt/man-db/libexec/bin
 mutt
 ninja
+openjdk			/opt/homebrew/opt/openjdk/bin
 pipx
 prusaslicer
 python
