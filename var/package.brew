@@ -13,6 +13,7 @@ go
 google-chrome
 lld
 llvm			/opt/homebrew/opt/llvm/bin
+m4			/opt/homebrew/opt/m4/bin
 make			/opt/homebrew/opt/make/libexec/gnubin
 man-db			/opt/homebrew/opt/man-db/libexec/bin
 mutt
