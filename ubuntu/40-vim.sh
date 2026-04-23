@@ -17,7 +17,7 @@ cd vim
 git fetch
 
 git clean -dxf
-git checkout v9.1.1830
+git checkout v9.2.0388
 
 cd src
 
