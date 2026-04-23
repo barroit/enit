@@ -3,6 +3,7 @@ bambu-studio
 cmake
 coreutils		/opt/homebrew/opt/coreutils/libexec/gnubin
 discord
+expat			/opt/homebrew/opt/expat/bin
 fastfetch
 font-jetbrains-mono
 freecad
@@ -21,7 +22,7 @@ ninja
 openjdk			/opt/homebrew/opt/openjdk/bin
 pipx
 prusaslicer
-python
+python@3.14		/opt/homebrew/bin
 texlive
 visual-studio-code
 yq
