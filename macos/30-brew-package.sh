@@ -14,20 +14,19 @@ printf 'dummy39\n' >>.update-$$
 grep -xvFf .update-$$ .local-$$ >.skip-$$
 
 while read name bin; do
+	touch .tmp-$$
+
 	if need_skip_line "$name"; then
 		continue
 	fi
 
-	if grep -qF $name .skip-$$; then
-		continue
+	if ! grep -qF $name .skip-$$; then
+		# Brew's happy to fuck up our environment, isolate it.
+		sh -c "brew install $name" 2>.tmp-$$ || true
 	fi
-
-	# Brew's happy to fuck up our environment, isolate it.
-	sh -c "brew install $name" 2>.tmp-$$ || true
 
 	if [ -s .tmp-$$ ]; then
 		cat .tmp-$$ >&2
-		continue
 	fi
 
 	if [ -n "$bin" ]; then
