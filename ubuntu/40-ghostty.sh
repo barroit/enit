@@ -11,6 +11,4 @@ sudo update-alternatives --install /usr/bin/x-terminal-emulator \
 
 sudo update-alternatives --set x-terminal-emulator $(command -v ghostty)
 
-sudo apt remove gnome-terminal
-
 ok
