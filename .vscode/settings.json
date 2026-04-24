@@ -1,14 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 {
-   "fileHeaderComment.parameter": {
-      "*": {
-         "license": "GPL-3.0-or-later",
-         "year": "2025"
-      }
-   },
    "search.followSymlinks": false,
    "files.associations": {
-      "**/var/**": "plaintext"
-   }
+      "**/var/**": "plaintext",
+   },
 }
