@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 com.bambulab.BambuStudio
-org.freecad.FreeCAD
 com.prusa3d.PrusaSlicer
+org.freecad.FreeCAD
+org.videolan.VLC
