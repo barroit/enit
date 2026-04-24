@@ -6,8 +6,7 @@
 #   https://cdimage.ubuntu.com/ubuntu/releases/<version>/release/*.manifest
 
 asciidoc
-autoconf
-automake
+build-essential
 clang
 cmake
 cowsay
@@ -19,21 +18,15 @@ fcitx5-pinyin
 feh
 ffmpeg
 fzf
-g++-14
-gcc-14
 gettext
 gimp
 gpick
 imagemagick
 jq
-libncurses-dev
-libxt-dev
 lld
 lldb
-llvm
-make
 manpages-posix
-mingw-w64
+meson
 mozc-data
 mozc-server
 mozc-utils-gui
@@ -41,16 +34,12 @@ mutt
 ninja-build
 nmap
 nodejs
-obs-studio
-openjdk-17-jre
-openjdk-21-jdk
 openssh-server
 qbittorrent
 rclone
 rename
-smartmontools
 texinfo
-texlive-lang-japanese
+texlive-full
 tree
 wine
 woff2
