@@ -18,6 +18,7 @@ curl -sLo $zip $url
 unzip -q $zip
 
 rm -rf $dir
+mkdir -p $(dirname $dir)
 mv fonts $dir
 
 fc-cache $dir
