@@ -10,7 +10,7 @@ cd $rtree/..
 
 if [ ! -d vim/.git ]; then
 	rm -rf vim
-	git clone git@github.com:vim/vim.git
+	git clone https://github.com/vim/vim.git
 fi
 
 cd vim
