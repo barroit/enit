@@ -5,6 +5,7 @@
 # And filter out preinstalled packages
 #   https://cdimage.ubuntu.com/ubuntu/releases/<version>/release/*.manifest
 
+aria2
 asciidoc
 build-essential
 clang
