@@ -4,6 +4,6 @@ INFO_MESG='Installing tailscale'
 
 skip_installed tailscale
 
-curl -fsSL https://bun.sh/install | bash
+curl -fsSL https://tailscale.com/install.sh | sh
 
 ok
