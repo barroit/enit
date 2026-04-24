@@ -27,6 +27,6 @@ rm -rf Templates
 rm -rf Public
 
 ln -snf /tmp/sandbox sandbox
-ln -snf /media/$USER media
+ln -snf /run/media/$USER media
 
 init_ok
