@@ -4,7 +4,7 @@ export data=$HOME/.local/share/barroit
 
 export bin=$HOME/.local/bin
 
-export vault=/media/$(whoami)/vault
+export vault=/run/media/$(whoami)/vault
 
 export pub_key=D23179B998CE8CF1
 
