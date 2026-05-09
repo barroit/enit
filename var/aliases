@@ -6,6 +6,7 @@ pull	git pull
 push	git push
 rebase	git rebase
 show	git show
+stash	git stash
 status	git status
 switch	git switch
 
