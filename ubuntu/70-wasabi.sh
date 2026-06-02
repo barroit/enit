@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
+#
 # https://rclone.org/commands/rclone_mount/#rclone-as-unix-mount-helper
 
 sudo ln -sf /usr/bin/rclone /sbin/mount.rclone
@@ -8,11 +9,11 @@ cd .config/systemd/user
 
 while read remote local; do
 	local=$(eval printf %s $local)
-	dotmount=$(printf %s.mount ${local#/} | tr / -)
+	dotmnt=$(printf %s.mount ${local#/} | tr / -)
 
 	mkdir -p $local
 
-	cat <<-EOF >$dotmount
+	cat <<-EOF >$dotmnt
 	[Unit]
 	Wants=network-online.target
 	After=network-online.target
@@ -21,21 +22,21 @@ while read remote local; do
 	Type=rclone
 	What=$remote
 	Where=$local
-	Options=vfs-cache-mode=full
+	Options=vfs-cache-mode=full,vfs-links
 
 	[Install]
 	WantedBy=default.target
 	EOF
 
-	if ! systemctl --user is-enabled --quiet $dotmount; then
-		systemctl --user enable --now $dotmount
+	if ! systemctl --user is-enabled --quiet $dotmnt; then
+		systemctl --user enable --now $dotmnt
 
 	else
 		systemctl --user daemon-reload
-		systemctl --user restart $dotmount
+		systemctl --user restart $dotmnt
 	fi
 
-	info "started $dotmount"
+	info "started $dotmnt"
 
 done <$vartree/wasabi
 
