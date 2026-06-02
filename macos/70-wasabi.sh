@@ -26,6 +26,7 @@ while read remote local; do
 	      <string>$(command -v rclone)</string>
 	      <string>mount</string>
 	      <string>--vfs-cache-mode=full</string>
+	      <string>--vfs-links</string>
 	      <string>$remote</string>
 	      <string>$mnt</string>
 	    </array>
