@@ -2,9 +2,9 @@
 
 cd $etctree
 
-files=$(grep filter=etc .gitattributes | awk '{ print $1 }')
-
-rm -f $files
-git restore -- $files
+grep filter=etc .gitattributes | awk '{ print $1 }' | while read name; do
+	rm -f $name
+	git restore -- $name
+done
 
 ok 'Appling etc filters'
