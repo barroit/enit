@@ -16,7 +16,7 @@ printf 'dummy39\n' >>.update-$$
 grep -xvFf .update-$$ .local-$$ >.skip-$$ || true
 
 while read name bin <&3; do
-	>.tmp-$$
+	printf '' >.tmp-$$
 
 	if need_skip_line "$name"; then
 		continue
