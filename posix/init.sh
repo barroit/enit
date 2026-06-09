@@ -70,7 +70,7 @@ LC_ALL=C sort <.script-$$ >.task-$$
 
 printf 'Set working directory to %s\n' $HOME
 
-while read script; do
+while read script <&9; do
 	cd
 	>.tmp-$$
 
@@ -82,4 +82,4 @@ while read script; do
 		warn "$(basename $script) interrupted" || true
 	fi
 
-done <.task-$$
+done 9<.task-$$
