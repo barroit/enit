@@ -30,7 +30,7 @@ read_config_patched filemap | while IFS=$TAB read name outdir mode; do
 	fi
 
 	eval "$sudo $mkdir -p '$outdir'" 2>.err-$$ &&
-	eval "$sudo $ln $PWD/$name '$outdir'" 2>.err-$$ || true
+	eval "$sudo /bin/$ln $PWD/$name '$outdir'" 2>.err-$$ || true
 
 	if [ -s .err-$$ ]; then
 		fmt="%s $BOLD$RED==>$RESET %s\n"
