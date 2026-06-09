@@ -4,16 +4,14 @@ INFO_MESG='Configuring rclone'
 
 ! test_force_run && [ -s .config/rclone/rclone.conf ] && skip
 
-require_vault
-
 mkdir -p .config/rclone
 cd .config/rclone
 
 trap 'rm -f .tmp-$$' EXIT
-gpg --yes -o rclone.conf -d $vault/conf_rclone.gpg || touch .tmp-$$
+gpg --yes -o rclone.conf -d $HOME/conf_rclone.gpg || touch .tmp-$$
 
 if [ -f .tmp-$$ ]; then
-	die "failed to import $vault/conf_rclone.gpg"
+	die "failed to import $HOME/conf_rclone.gpg"
 fi
 
 ok

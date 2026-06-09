@@ -42,13 +42,6 @@ kernel_id()
 	basename $(dirname $(realpath $stree/run.sh))
 }
 
-require_vault()
-{
-	if [ ! -d $vault ]; then
-		die "vault is not found at $vault"
-	fi
-}
-
 wrote()
 {
 	printf '%s, %s wrote:\n' "$(on_date)" $script_id
