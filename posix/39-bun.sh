@@ -6,4 +6,7 @@ skip_installed bun
 
 curl -fsSL https://bun.sh/install | bash
 
+write_on_miss 'export BUN_INSTALL="$HOME/.bun"' ${dotsh}rc
+write_on_miss 'export PATH="$BUN_INSTALL/bin:$PATH"' ${dotsh}rc
+
 ok
