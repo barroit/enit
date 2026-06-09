@@ -1,5 +1,6 @@
 autoconf
 bambu-studio
+blender
 cmake
 coreutils		/opt/homebrew/opt/coreutils/libexec/gnubin
 discord
@@ -7,6 +8,7 @@ expat			/opt/homebrew/opt/expat/bin
 fastfetch
 font-jetbrains-mono
 freecad
+ghostty
 git			/opt/homebrew/opt/git/bin
 git-lfs			/opt/homebrew/opt/git-lfs/bin
 gnupg
