@@ -15,7 +15,7 @@ printf 'dummy39\n' >>.update-$$
 
 grep -xvFf .update-$$ .local-$$ >.skip-$$ || true
 
-while read name bin; do
+while read name bin <&3; do
 	>.tmp-$$
 
 	if need_skip_line "$name"; then
@@ -35,6 +35,6 @@ while read name bin; do
 		write_on_miss "export PATH=\"$bin:\$PATH\"" .zprofile
 	fi
 
-done <$vartree/package.brew
+done 3<$vartree/package.brew
 
 ok 'Installing homebrew packages'
