@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+set -e
+
 brew update
 brew upgrade
 
@@ -11,7 +13,7 @@ brew list --cask >>.local-$$
 brew outdated --quiet >.update-$$
 printf 'dummy39\n' >>.update-$$
 
-grep -xvFf .update-$$ .local-$$ >.skip-$$
+grep -xvFf .update-$$ .local-$$ >.skip-$$ || true
 
 while read name bin; do
 	touch .tmp-$$
