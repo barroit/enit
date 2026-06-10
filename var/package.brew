@@ -11,6 +11,7 @@ freecad
 ghostty
 git			/opt/homebrew/opt/git/bin
 git-lfs			/opt/homebrew/opt/git-lfs/bin
+gnu-tar			/opt/homebrew/opt/gnu-tar/libexec/gnubin
 gnupg
 go
 google-chrome
