@@ -27,6 +27,7 @@ pipx
 prusaslicer
 python@3.14		/opt/homebrew/bin
 texlive
+tree
 visual-studio-code
 yq
 zstd
