@@ -3,6 +3,7 @@ bambu-studio
 blender
 cmake
 coreutils		/opt/homebrew/opt/coreutils/libexec/gnubin
+deno
 discord
 expat			/opt/homebrew/opt/expat/bin
 fastfetch
