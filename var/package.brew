@@ -6,6 +6,7 @@ coreutils		/opt/homebrew/opt/coreutils/libexec/gnubin
 discord
 expat			/opt/homebrew/opt/expat/bin
 fastfetch
+ffmpeg
 font-jetbrains-mono
 freecad
 ghostty
