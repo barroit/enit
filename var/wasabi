@@ -1,7 +1,7 @@
-wasabi:barroit		$HOME/wasabi
-wasabi:blender39	$HOME/blender39
-wasabi:cad39		$HOME/cad39
-wasabi:cred		$HOME/cred
-wasabi:image39		$HOME/image39
-wasabi:mmd39		$HOME/mmd39
-wasabi:vocaloid		$HOME/vocaloid
+wasabi:barroit		$HOME/s3/etc
+wasabi:blender39	$HOME/s3/blender
+wasabi:cad39		$HOME/s3/cad
+wasabi:cred		$HOME/s3/cred
+wasabi:image39		$HOME/s3/image
+wasabi:mmd39		$HOME/s3/mmd
+wasabi:vocaloid		$HOME/s3/vocaloid
