@@ -1,5 +1,8 @@
 codespell/.codespellrc	$HOME
 
+codex/AGENTS.md		$HOME/.codex
+codex/config.toml	$HOME/.codex
+
 fastfetch/*		$HOME/.config/fastfetch
 
 ghostty/config		$HOME/.config/ghostty
