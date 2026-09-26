@@ -12,6 +12,11 @@ git/ignore		$HOME/.config/git
 
 gnupg/gpg-agent.conf	$HOME/.gnupg
 
+kitty/config/color	$HOME/.config/kitty/config
+kitty/config/font	$HOME/.config/kitty/config
+kitty/config/keymap	$HOME/.config/kitty/config
+kitty/kitty.conf	$HOME/.config/kitty
+
 mutt/.*			$HOME
 mutt/*			$HOME/.mutt
 
