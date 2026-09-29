@@ -13,7 +13,6 @@ git/ignore		$HOME/.config/git
 gnupg/gpg-agent.conf	$HOME/.gnupg
 
 kitty/config/color	$HOME/.config/kitty/config
-kitty/config/font	$HOME/.config/kitty/config
 kitty/config/binding	$HOME/.config/kitty/config
 kitty/kitty.conf	$HOME/.config/kitty
 
