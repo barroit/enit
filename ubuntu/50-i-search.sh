@@ -1,0 +1,1 @@
+../posix/39-i-search.sh
