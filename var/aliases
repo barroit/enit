@@ -13,3 +13,6 @@ switch	git switch
 m	make
 
 use-idf	. $HOME/git/esp-idf/export.sh
+
+venv_activate	. .venv/bin/activate
+venv_deactivate	deactivate
