@@ -11,3 +11,6 @@ dev	ubuntu		D23179B998CE8CF1
 oci	headnode	D23179B998CE8CF1
 
 com	github		D23179B998CE8CF1
+com	gitlab		D23179B998CE8CF1
+
+google	colab		D23179B998CE8CF1
